@@ -174,15 +174,16 @@
 <div class="wrap">
   <header class="sticky">
     <div class="hdr-top">
-      <h1>Dagster Job 현황판 <span style="font-weight:500;color:var(--muted);font-size:.85rem">v2 · light</span></h1>
+      <h1>Dagster Job 현황판 <span style="font-weight:500;color:var(--muted);font-size:.85rem">v3 · Cloud</span></h1>
       <div class="gen" id="gen-ts"></div>
     </div>
     <div class="kpis" id="kpis"></div>
     <div class="legend">
-      <span><i class="dot on"></i> 켜짐 = JOB-INDEX RUNNING</span>
-      <span><i class="dot off"></i> 꺼짐 = JOB-INDEX STOPPED</span>
-      <span><i class="dot fail"></i> 실패 = 최근 실패 알림</span>
-      <span><i class="dot unk"></i> 정보부족 = 알림 없음 (성공 확정 아님)</span>
+      <span><i class="dot on"></i>성공 = Cloud 최근 런 성공 위주</span>
+      <span><i class="dot fail"></i>실패중/혼조 = Cloud 실패 바</span>
+      <span><i class="dot unk"></i>최근런없음 = Cloud에 최근 런 없음</span>
+      <span><i class="dot on"></i>켜짐/꺼짐 = JOB-INDEX</span>
+      <span><i class="dot unk"></i>Slack 링크는 참고용 (성공이어도 알림 이력 가능)</span>
     </div>
   </header>
 
@@ -244,10 +245,11 @@
     chip('Discovery', k.discovery, 'disc'),
     chip('켜짐', k.on, 'on'),
     chip('꺼짐', k.off, 'off'),
+    chip('성공', k.success, 'on'),
     chip('실패중', k.failing, 'fail'),
-    chip('48h실패', k.failing_48h, 'fail'),
-    chip('정보부족', k.healthy_unknown),
-    chip('슬랙링크', k.with_slack_permalink),
+    chip('혼조', k.mixed),
+    chip('최근런없음', k.no_recent),
+    chip('슬랙알림있음', k.with_slack_permalink),
   ].join('');
 
   function chip(label, n, cls) {
@@ -256,7 +258,7 @@
 
   const caveats = (DATA.caveats || []).map(function (c) { return '<li>' + esc(c) + '</li>'; }).join('');
   document.getElementById('footer').innerHTML =
-    '<div><b>데이터 출처</b>: inventory + JOB-INDEX + #dagster-noti + GitHub commits · light mode only</div>' +
+    '<div><b>데이터 출처</b>: Dagster Cloud Jobs UI + inventory + JOB-INDEX + #dagster-noti · light mode</div>' +
     '<ul>' + caveats + '</ul>' +
     '<div>오프라인: 이 HTML 단독 열기 가능. 갱신은 <code>data.json</code> + REFRESH.md 참고.</div>';
 
@@ -289,7 +291,7 @@
   function filtered() {
     return jobs.filter(function (j) {
       if (cat !== 'all' && j.category !== cat) return false;
-      if (failOnly && j.status !== 'failing') return false;
+      if (failOnly && j.status !== 'failing' && j.status !== 'mixed') return false;
       if (onOnly && j.power !== 'on') return false;
       if (offOnly && j.power !== 'off') return false;
       if (!q) return true;
@@ -302,8 +304,8 @@
   function statusPill(j) {
     const cls = j.status || 'unknown';
     const label = j.status_label || cls;
-    return '<span class="status-pill ' + cls + '"><i class="dot ' +
-      (cls === 'failing' ? 'fail' : 'unk') +
+    const dot = cls === 'failing' ? 'fail' : cls === 'success' ? 'on' : cls === 'mixed' ? 'off' : 'unk';
+    return '<span class="status-pill ' + cls + '"><i class="dot ' + dot +
       '"></i>' + esc(label) + '</span>';
   }
 
