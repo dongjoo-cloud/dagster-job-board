@@ -91,7 +91,12 @@ def platform_cats(idx: dict, platform: str) -> list[str]:
         if band == "1_under10k":
             continue
         totals[cat] += n
-    return [c for c, _ in sorted(totals.items(), key=lambda x: (-x[1], x[0]))]
+    # (분류없음) always first (top row); remaining by count desc, then A–Z.
+    UNCAT = "(분류없음)"
+    rest = [c for c, _ in sorted(totals.items(), key=lambda x: (-x[1], x[0])) if c != UNCAT]
+    if UNCAT in totals:
+        return [UNCAT] + rest
+    return rest
 
 
 def cell_n(idx: dict, platform: str, cat: str, co_label: str, band: str) -> int:
