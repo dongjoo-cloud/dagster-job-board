@@ -16,6 +16,10 @@ import json
 from collections import defaultdict
 from datetime import datetime
 from pathlib import Path
+import sys
+from pathlib import Path as _P
+sys.path.insert(0, str(_P(__file__).resolve().parent))
+from site_nav import site_nav_html
 from zoneinfo import ZoneInfo
 
 KST = ZoneInfo("Asia/Seoul")
@@ -207,7 +211,7 @@ def render(raw: Path, prev: Path | None, out: Path, stamp: str | None) -> dict:
 *{box-sizing:border-box} body{margin:0;background:var(--paper);color:var(--ink);font:14px/1.6 "IBM Plex Sans KR",system-ui,sans-serif}
 .wrap{max-width:1240px;margin:0 auto;padding:24px 20px 60px}
 .eyebrow{font:600 11px/1 "IBM Plex Mono",monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--copper);margin-bottom:6px}
-h1{font-size:23px;margin:0 0 4px} .sub{color:var(--mute);font-size:12.5px;margin-bottom:16px}
+.hdr-top{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px 18px;justify-content:space-between}h1{font-size:23px;margin:0} .gen{color:var(--mute);font-size:.85rem} .sub{color:var(--mute);font-size:12.5px;margin:8px 0 16px}
 h2{font-size:15px;margin:26px 0 10px;padding-left:10px;border-left:3px solid var(--copper)}
 .card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px;overflow-x:auto}
 table{border-collapse:collapse;font-size:12.5px;width:100%}
@@ -220,18 +224,20 @@ td.tot{background:#f4f6f9;font-weight:700}
 .c2{background:#fdf6e3;color:#8a6d1f} .c3{background:#eef7f0;color:#2e8b57} .c4{background:#dcf0e4;color:#1f6b41;font-weight:600}
 .note{font-size:12.5px;color:var(--mute);margin-top:10px}
 .legend span{display:inline-block;padding:2px 9px;border-radius:6px;margin-right:6px;font:600 11.5px "IBM Plex Mono",monospace}
-.nav{font-size:12.5px;margin-bottom:14px} .nav a{color:var(--copper);margin-right:14px;text-decoration:none;font-weight:500}
-.nav a:hover{text-decoration:underline}
 """.strip()
 
     parts = [
         "<!doctype html><html lang=ko><head><meta charset=utf-8>",
-        "<title>완전체 커버리지 격자</title>",
+        "<title>완전체 분포</title>",
         '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;700&family=IBM+Plex+Mono:wght@400;600&display=swap">',
-        f"<style>\n{css}\n</style></head><body><div class=wrap>",
-        '<div class=eyebrow>Storika · Discovery · 커버리지 격자</div>',
+        f"<style>\n{css}\n</style></head><body>",
+        site_nav_html("coverage-grid.html"),
+        "<div class=wrap>",
+        '<div class=eyebrow>Storika · Discovery · 완전체 분포</div>',
+        '<div class=hdr-top>',
         "<h1>완전체가 실제로 어디에 있나</h1>",
-        '<div class="nav"><a href="index.html">← 잡 보드</a><a href="fill-status.html">채우기 보드</a></div>',
+        f'<div class=gen>생성 {esc(stamp)}</div>',
+        '</div>',
         f'<div class=sub>{esc(sub)}</div>',
         '<div class="note legend">칸당 제안 목표 <b>300명</b> · '
         '<span class=c0>0</span><span class=c1>~49</span><span class=c2>50~299</span>'
