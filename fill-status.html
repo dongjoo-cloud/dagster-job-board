@@ -1,4 +1,4 @@
-<div class="site-nav" style="font:500 12.5px/1.4 system-ui,sans-serif;padding:8px 16px;background:#fff;border-bottom:1px solid #e2e6eb;display:flex;gap:14px;align-items:center"><a href="index.html" style="color:#c2652a;text-decoration:none">잡 보드</a><a href="coverage-grid.html" style="color:#c2652a;text-decoration:none">커버리지 격자</a><a href="fill-status.html" style="color:#2563eb;text-decoration:none">채우기 보드</a></div><title>완전체 재료 채우기</title>
+<!doctype html><html lang=ko><head><meta charset=utf-8><title>완전체 재료 채우기</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;700&family=IBM+Plex+Mono:wght@400;600&display=swap">
 <style>
 :root{--paper:#f3f5f8;--card:#fff;--ink:#1a1f2b;--mute:#5f6b7a;--line:#dfe3e9;--copper:#c2652a;--copper-soft:#fbeee4;--ok:#2e8b57;--ok-soft:#e6f4ec;--bad:#b3392e;--bad-soft:#f9e4e1;--info:#3b6fb6;--info-soft:#e6eef9;--n-soft:#eef1f5;--sp:#2e8b57;color-scheme:light}
@@ -37,7 +37,7 @@ th{color:var(--mute);font:600 10.5px/1.4 "IBM Plex Mono",monospace;letter-spacin
 .wtbl table{font-size:12.5px} .wtbl td{padding:6px 7px}
 @media(max-width:640px){.src{display:none} .wtbl th:last-child{display:none}}
 </style>
-<div class="wrap">
+</head><body><div class="site-nav" style="font:500 12.5px/1.4 system-ui,sans-serif;padding:8px 16px;background:#fff;border-bottom:1px solid #e2e6eb;display:flex;gap:14px;align-items:center;position:sticky;top:0;z-index:100"><a href="index.html" style="color:#c2652a;text-decoration:none">잡 보드</a><a href="coverage-grid.html" style="color:#c2652a;text-decoration:none">커버리지 격자</a><a href="fill-status.html" style="color:#2563eb;text-decoration:none">채우기 보드</a></div><div class="wrap">
 <div class="eyebrow">Storika · Discovery · 배관 확정 단계</div>
 <h1>완전체 재료 채우기 — IG 3만 · TT 3만</h1>
 <div class="sub">완전체 = 카드 + Spanner 게시물 10개↑ + 6월 이후 게시 + 벡터 10개↑ + 라벨 5개↑ · 실측 <span class="num">2026-09-23 14:28 KST</span> · Spanner 직접 조회 · 허브가 갱신(같은 링크 새로고침)</div>
@@ -92,4 +92,4 @@ th{color:var(--mute);font:600 10.5px/1.4 "IBM Plex Mono",monospace;letter-spacin
 <h3 style="margin:14px 0 6px">IG 드레인 (9/19 22:51~)</h3>
 <table><tr><th>시각</th><th>이벤트</th></tr><tr><td class="num">09-23 14:00</td><td class="bad">STOP hub drain script stopped by Master decision (10860 sensor takes over); 101 runs SUCCESS, run 43 7544fa43 left to finish on Dagster</td></tr><tr><td class="num">09-23 13:55</td><td class="">run 43 launched 7544fa43-8fd2-4dc8-a106-74d937186db5</td></tr><tr><td class="num">09-23 13:55</td><td class="ok">run 42 SUCCESS touched=10000 creators_written=1581 rows_written=30945 rows_evicted=700 transcripts_filled=1398 embeddings_written=10280</td></tr><tr><td class="num">09-23 13:48</td><td class="">run 42 launched 370eea69-f66a-4b70-a5e7-18c272d390be</td></tr><tr><td class="num">09-23 13:48</td><td class="ok">run 41 SUCCESS touched=10000 creators_written=1029 rows_written=20257 rows_evicted=21 transcripts_filled=726 embeddings_written=5194</td></tr><tr><td class="num">09-23 13:43</td><td class="">run 41 launched 7c92f62e-e638-4e65-8fc6-ed79d52de9e7</td></tr><tr><td class="num">09-23 13:43</td><td class="ok">run 40 SUCCESS touched=10000 creators_written=14 rows_written=271 rows_evicted=7 transcripts_filled=0 embeddings_written=234</td></tr><tr><td class="num">09-23 13:41</td><td class="">run 40 launched 7b7e9ab1-b1b8-463c-a5eb-155eec0f1ebb</td></tr></table>
 <div class="note">런당 상한 7.5만 행(20만은 메모리로 죽음). 9/17 1차 드레인은 앞단 조회의 v4 라벨 게이트 때문에 라벨 없는 220만 행을 건너뛰고 종료(STORIKA-10460). 게이트 수정·워터마크 되감기 뒤 재실행. 스케줄 창(06:00~06:30, 18:00~18:30) 회피.</div></div>
-</div>
+</div></body></html>
