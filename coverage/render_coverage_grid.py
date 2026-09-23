@@ -139,7 +139,15 @@ def render_platform_table(
                 cells.append(f'<td class="{cls}">{fmt_cell(n, prev, show_delta)}</td>')
         cells.append(f'<td class="tot">{fmt_num(row_tot)}</td>')
         body.append("<tr>" + "".join(cells) + "</tr>")
-    return f"<h2>{esc(title)}</h2><div class=card>{head}{''.join(body)}</table></div>"
+    plat_tot = sum(
+        n
+        for (plat, _cat, _co, band), (n, _) in idx.items()
+        if plat == platform and band != "1_under10k"
+    )
+    return (
+        f"<h2>{esc(title)} <span class=ptot>· {fmt_num(plat_tot)}</span></h2>"
+        f"<div class=card>{head}{''.join(body)}</table></div>"
+    )
 
 
 def render_skin_table(idx: dict, prev_idx: dict | None, show_delta: bool) -> str:
@@ -212,7 +220,7 @@ def render(raw: Path, prev: Path | None, out: Path, stamp: str | None) -> dict:
 .wrap{max-width:1240px;margin:0 auto;padding:24px 20px 60px}
 .eyebrow{font:600 11px/1 "IBM Plex Mono",monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--copper);margin-bottom:6px}
 .hdr-top{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px 18px;justify-content:space-between}h1{font-size:23px;margin:0} .gen{color:var(--mute);font-size:.85rem} .sub{color:var(--mute);font-size:12.5px;margin:8px 0 16px}
-h2{font-size:15px;margin:26px 0 10px;padding-left:10px;border-left:3px solid var(--copper)}
+h2{font-size:15px;margin:26px 0 10px;padding-left:10px;border-left:3px solid var(--copper)}h2 .ptot{color:var(--mute);font-weight:500;font-variant-numeric:tabular-nums;font-family:"IBM Plex Mono",monospace}
 .card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px;overflow-x:auto}
 table{border-collapse:collapse;font-size:12.5px;width:100%}
 th,td{padding:5px 7px;border:1px solid var(--line);text-align:center;font-variant-numeric:tabular-nums;font-family:"IBM Plex Mono",monospace}
