@@ -1,6 +1,6 @@
 {
   "version": "4.1",
-  "generated_at_kst": "2026-09-25 09:05 KST",
+  "generated_at_kst": "2026-09-25 10:13 KST",
   "sources": {
     "inventory": "/workspace/dagster-job-inventory/jobs.json",
     "job_index": "storika/storika-mono python/data-pipeline/src/defs/README.md JOB-INDEX",
@@ -2092,12 +2092,19 @@
       "intentional_wait": false,
       "obsolete_candidate": false,
       "needs_review": false,
-      "issues_summary": "Cloud 최근 런 실패 · 슬랙 실패 14일 6회",
-      "fail_count_14d": 6,
-      "fail_count_30d": 8,
-      "currently_failing": false,
-      "latest_fail_permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1789778443600829",
+      "issues_summary": "Cloud 최근 런 실패 · 슬랙 실패 14일 7회",
+      "fail_count_14d": 7,
+      "fail_count_30d": 9,
+      "currently_failing": true,
+      "latest_fail_permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1790296888113319",
       "failures": [
+        {
+          "ts_kst": "2026-09-25 09:41 KST",
+          "kind": "time_limit",
+          "job_or_sensor": "campaign_engagement_mart_sync_job",
+          "permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1790296888113319",
+          "snippet": "Exceeded run time limit · campaign_engagement_mart_sync_job"
+        },
         {
           "ts_kst": "2026-09-19 09:40 KST",
           "kind": "time_limit",
@@ -2124,13 +2131,6 @@
           "kind": "time_limit",
           "job_or_sensor": "campaign_engagement_mart_sync_job",
           "permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1789519250877529",
-          "snippet": "Exceeded run time limit · campaign_engagement_mart_sync_job"
-        },
-        {
-          "ts_kst": "2026-09-15 09:40 KST",
-          "kind": "time_limit",
-          "job_or_sensor": "campaign_engagement_mart_sync_job",
-          "permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1789432849597719",
           "snippet": "Exceeded run time limit · campaign_engagement_mart_sync_job"
         }
       ],
