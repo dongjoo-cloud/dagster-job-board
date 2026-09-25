@@ -1,6 +1,6 @@
 {
   "version": "4.1",
-  "generated_at_kst": "2026-09-25 15:00 KST",
+  "generated_at_kst": "2026-09-25 18:18 KST",
   "sources": {
     "inventory": "/workspace/dagster-job-inventory/jobs.json",
     "job_index": "storika/storika-mono python/data-pipeline/src/defs/README.md JOB-INDEX",
@@ -1265,12 +1265,19 @@
       "intentional_wait": false,
       "obsolete_candidate": false,
       "needs_review": false,
-      "issues_summary": "배관 잡 · 48h 내 런 없음 + 최근 런 실패 · 슬랙 실패 14일 31회",
-      "fail_count_14d": 31,
-      "fail_count_30d": 42,
+      "issues_summary": "배관 잡 · 48h 내 런 없음 + 최근 런 실패 · 슬랙 실패 14일 32회",
+      "fail_count_14d": 32,
+      "fail_count_30d": 43,
       "currently_failing": true,
-      "latest_fail_permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1790299175441329",
+      "latest_fail_permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1790324394005409",
       "failures": [
+        {
+          "ts_kst": "2026-09-25 17:19 KST",
+          "kind": "sensor",
+          "job_or_sensor": "instagram_profile_processor_coordination_sensor",
+          "permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1790324394005409",
+          "snippet": "Sensor fail · instagram_profile_processor_coordination_sensor"
+        },
         {
           "ts_kst": "2026-09-25 10:19 KST",
           "kind": "sensor",
@@ -1297,13 +1304,6 @@
           "kind": "sensor",
           "job_or_sensor": "instagram_profile_processor_coordination_sensor",
           "permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1790212774959669",
-          "snippet": "Sensor fail · instagram_profile_processor_coordination_sensor"
-        },
-        {
-          "ts_kst": "2026-09-24 06:19 KST",
-          "kind": "sensor",
-          "job_or_sensor": "instagram_profile_processor_coordination_sensor",
-          "permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1790198375561799",
           "snippet": "Sensor fail · instagram_profile_processor_coordination_sensor"
         }
       ],
