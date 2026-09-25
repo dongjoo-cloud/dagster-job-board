@@ -1,6 +1,6 @@
 {
   "version": "4.1",
-  "generated_at_kst": "2026-09-24 15:07 KST",
+  "generated_at_kst": "2026-09-25 09:05 KST",
   "sources": {
     "inventory": "/workspace/dagster-job-inventory/jobs.json",
     "job_index": "storika/storika-mono python/data-pipeline/src/defs/README.md JOB-INDEX",
@@ -49,7 +49,7 @@
     "센서 실패는 job의 sensors/schedules 정확 매칭 우선, 이후 stem 보조.",
     "created_at는 정의 파일 경로의 GitHub 최초 커밋일(best-effort; rename 시 이전 이력 누락 가능).",
     "JOB-INDEX RUNNING/STOPPED는 문서 생성 시점 기준(실시간 Dagster Cloud 상태 아님).",
-    "Slack 윈도우: 2026-08-25 ~ 2026-09-24 KST; currently_failing = last 48h.",
+    "Slack 윈도우: 2026-08-26 ~ 2026-09-25 KST; currently_failing = last 48h.",
     "Slack permalink는 Message TS로 구성(https://storika-ai.slack.com/archives/C0A3KBPU2P4/p…).",
     "obsolete_후보 = artifact 배관 미매핑 + 명확히 캠페인/운영이 아님 (확정 폐기 아님). 의도적대기 = TT 이미지청킹·STT 등 비용/미시작."
   ],
@@ -181,10 +181,10 @@
       "intentional_wait": false,
       "obsolete_candidate": false,
       "needs_review": false,
-      "issues_summary": "배관 잡 · 최근 런 실패 · 슬랙 실패 14일 72회",
-      "fail_count_14d": 72,
+      "issues_summary": "배관 잡 · 최근 런 실패 · 슬랙 실패 14일 68회",
+      "fail_count_14d": 68,
       "fail_count_30d": 78,
-      "currently_failing": true,
+      "currently_failing": false,
       "latest_fail_permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1790082732883119",
       "failures": [
         {
@@ -237,7 +237,7 @@
       "dagster_default_status": "STOPPED",
       "power": "off",
       "power_label": "꺼짐",
-      "notes": "JOB-INDEX상 schedule/sensor STOPPED",
+      "notes": "JOB-INDEX상 schedule/sensor STOPPED · 최근 14일 실패 알림 있음(48h 밖일 수 있음)",
       "tab": "discovery"
     },
     {
@@ -345,10 +345,10 @@
       "intentional_wait": false,
       "obsolete_candidate": false,
       "needs_review": false,
-      "issues_summary": "배관 잡 · 최근 런 실패 · 슬랙 실패 14일 78회",
-      "fail_count_14d": 78,
+      "issues_summary": "배관 잡 · 최근 런 실패 · 슬랙 실패 14일 76회",
+      "fail_count_14d": 76,
       "fail_count_30d": 81,
-      "currently_failing": true,
+      "currently_failing": false,
       "latest_fail_permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1790082763108549",
       "failures": [
         {
@@ -401,7 +401,7 @@
       "dagster_default_status": "RUNNING",
       "power": "on",
       "power_label": "켜짐",
-      "notes": "",
+      "notes": "최근 14일 실패 알림 있음(48h 밖일 수 있음)",
       "tab": "discovery"
     },
     {
@@ -566,7 +566,7 @@
       "issues_summary": "배관 잡 · 최근 런 실패 · 슬랙 실패 14일 16회",
       "fail_count_14d": 16,
       "fail_count_30d": 16,
-      "currently_failing": true,
+      "currently_failing": false,
       "latest_fail_permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1790082913766749",
       "failures": [
         {
@@ -619,7 +619,7 @@
       "dagster_default_status": "STOPPED",
       "power": "off",
       "power_label": "꺼짐",
-      "notes": "JOB-INDEX상 schedule/sensor STOPPED",
+      "notes": "JOB-INDEX상 schedule/sensor STOPPED · 최근 14일 실패 알림 있음(48h 밖일 수 있음)",
       "tab": "discovery"
     },
     {
@@ -645,10 +645,10 @@
       "intentional_wait": false,
       "obsolete_candidate": false,
       "needs_review": false,
-      "issues_summary": "배관 잡 · 최근 런 실패 · 슬랙 실패 14일 93회",
-      "fail_count_14d": 93,
+      "issues_summary": "배관 잡 · 최근 런 실패 · 슬랙 실패 14일 90회",
+      "fail_count_14d": 90,
       "fail_count_30d": 100,
-      "currently_failing": true,
+      "currently_failing": false,
       "latest_fail_permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1790082642455069",
       "failures": [
         {
@@ -701,7 +701,7 @@
       "dagster_default_status": "STOPPED",
       "power": "off",
       "power_label": "꺼짐",
-      "notes": "JOB-INDEX상 schedule/sensor STOPPED",
+      "notes": "JOB-INDEX상 schedule/sensor STOPPED · 최근 14일 실패 알림 있음(48h 밖일 수 있음)",
       "tab": "discovery"
     },
     {
@@ -728,7 +728,7 @@
       "obsolete_candidate": false,
       "needs_review": false,
       "issues_summary": "배관 잡 · 최근 런 실패",
-      "fail_count_14d": 2,
+      "fail_count_14d": 1,
       "fail_count_30d": 2,
       "currently_failing": false,
       "latest_fail_permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1789098819824289",
@@ -1201,7 +1201,7 @@
       "issues_summary": "배관 잡 · 48h 내 런 없음 + 최근 런 혼재 · 슬랙 실패 14일 18회",
       "fail_count_14d": 18,
       "fail_count_30d": 37,
-      "currently_failing": true,
+      "currently_failing": false,
       "latest_fail_permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1790074874602169",
       "failures": [
         {
@@ -1254,7 +1254,7 @@
       "dagster_default_status": "RUNNING",
       "power": "on",
       "power_label": "켜짐",
-      "notes": "",
+      "notes": "최근 14일 실패 알림 있음(48h 밖일 수 있음)",
       "tab": "discovery"
     },
     {
@@ -1326,12 +1326,26 @@
       "intentional_wait": false,
       "obsolete_candidate": false,
       "needs_review": false,
-      "issues_summary": "배관 잡 · 48h 내 런 없음 + 최근 런 실패 · 슬랙 실패 14일 28회",
-      "fail_count_14d": 28,
-      "fail_count_30d": 39,
+      "issues_summary": "배관 잡 · 48h 내 런 없음 + 최근 런 실패 · 슬랙 실패 14일 30회",
+      "fail_count_14d": 30,
+      "fail_count_30d": 41,
       "currently_failing": true,
-      "latest_fail_permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1790212774959669",
+      "latest_fail_permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1790284787689219",
       "failures": [
+        {
+          "ts_kst": "2026-09-25 06:19 KST",
+          "kind": "sensor",
+          "job_or_sensor": "instagram_profile_processor_coordination_sensor",
+          "permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1790284787689219",
+          "snippet": "Sensor fail · instagram_profile_processor_coordination_sensor"
+        },
+        {
+          "ts_kst": "2026-09-24 20:49 KST",
+          "kind": "sensor",
+          "job_or_sensor": "instagram_profile_processor_coordination_sensor",
+          "permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1790250581170789",
+          "snippet": "Sensor fail · instagram_profile_processor_coordination_sensor"
+        },
         {
           "ts_kst": "2026-09-24 10:19 KST",
           "kind": "sensor",
@@ -1351,20 +1365,6 @@
           "kind": "sensor",
           "job_or_sensor": "instagram_profile_processor_coordination_sensor",
           "permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1790162363258439",
-          "snippet": "Sensor fail · instagram_profile_processor_coordination_sensor"
-        },
-        {
-          "ts_kst": "2026-09-23 15:49 KST",
-          "kind": "sensor",
-          "job_or_sensor": "instagram_profile_processor_coordination_sensor",
-          "permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1790146168969629",
-          "snippet": "Sensor fail · instagram_profile_processor_coordination_sensor"
-        },
-        {
-          "ts_kst": "2026-09-23 12:49 KST",
-          "kind": "sensor",
-          "job_or_sensor": "instagram_profile_processor_coordination_sensor",
-          "permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1790135361888339",
           "snippet": "Sensor fail · instagram_profile_processor_coordination_sensor"
         }
       ],
@@ -2963,7 +2963,7 @@
       "needs_review": false,
       "issues_summary": "—",
       "fail_count_14d": 0,
-      "fail_count_30d": 35,
+      "fail_count_30d": 29,
       "currently_failing": false,
       "latest_fail_permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1788787955017749",
       "failures": [
@@ -3684,10 +3684,10 @@
       "intentional_wait": true,
       "obsolete_candidate": false,
       "needs_review": false,
-      "issues_summary": "Cloud 최근 런 실패 · 슬랙 실패 14일 107회 · 의도적 OFF · TT 이미지 청크 (미착수)",
-      "fail_count_14d": 107,
+      "issues_summary": "Cloud 최근 런 실패 · 슬랙 실패 14일 104회 · 의도적 OFF · TT 이미지 청크 (미착수)",
+      "fail_count_14d": 104,
       "fail_count_30d": 115,
-      "currently_failing": true,
+      "currently_failing": false,
       "latest_fail_permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1790082582102639",
       "failures": [
         {
@@ -3740,7 +3740,7 @@
       "dagster_default_status": "STOPPED",
       "power": "off",
       "power_label": "꺼짐",
-      "notes": "JOB-INDEX상 schedule/sensor STOPPED",
+      "notes": "JOB-INDEX상 schedule/sensor STOPPED · 최근 14일 실패 알림 있음(48h 밖일 수 있음)",
       "tab": "discovery"
     },
     {
