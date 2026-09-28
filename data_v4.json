@@ -1,6 +1,6 @@
 {
   "version": "4.1",
-  "generated_at_kst": "2026-09-28 09:14 KST",
+  "generated_at_kst": "2026-09-28 11:20 KST",
   "sources": {
     "inventory": "/workspace/dagster-job-inventory/jobs.json",
     "job_index": "storika/storika-mono python/data-pipeline/src/defs/README.md JOB-INDEX",
@@ -11,7 +11,7 @@
     "dagster_cloud": "https://storika-inc.dagster.cloud/prod/jobs",
     "dagster_cloud_captured_at_kst": "2026-09-18 16:53 KST",
     "slack_light_poll_at_kst": "2026-09-21 15:11 KST",
-    "slack_light_poll": "slack_light_poll_20260923_1609.json",
+    "slack_light_poll": "light poll merge @ 2026-09-28 11:20 KST; +1 instagram_profile_processor_submitter_run via instagram_profile_processor_coordination_sensor",
     "artifact_jobs": "/workspace/claude-artifact-jobs/jobs.json",
     "artifact_outline": "/workspace/claude-artifact-jobs/outline.md",
     "automation": "/workspace/dagster-job-board/dagster_cloud_automation.json",
@@ -1265,12 +1265,19 @@
       "intentional_wait": false,
       "obsolete_candidate": false,
       "needs_review": false,
-      "issues_summary": "배관 잡 · 48h 내 런 없음 + 최근 런 실패 · 슬랙 실패 14일 40회",
-      "fail_count_14d": 40,
-      "fail_count_30d": 45,
+      "issues_summary": "배관 잡 · 48h 내 런 없음 + 최근 런 실패 · 슬랙 실패 14일 41회",
+      "fail_count_14d": 41,
+      "fail_count_30d": 46,
       "currently_failing": true,
-      "latest_fail_permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1790509790131729",
+      "latest_fail_permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1790558393536079",
       "failures": [
+        {
+          "ts_kst": "2026-09-28 10:19 KST",
+          "kind": "sensor",
+          "job_or_sensor": "instagram_profile_processor_coordination_sensor",
+          "permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1790558393536079",
+          "snippet": "Sensor fail · instagram_profile_processor_coordination_sensor"
+        },
         {
           "ts_kst": "2026-09-27 20:49 KST",
           "kind": "sensor",
@@ -1297,13 +1304,6 @@
           "kind": "sensor",
           "job_or_sensor": "instagram_profile_processor_coordination_sensor",
           "permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1790450385522479",
-          "snippet": "Sensor fail · instagram_profile_processor_coordination_sensor"
-        },
-        {
-          "ts_kst": "2026-09-26 18:49 KST",
-          "kind": "sensor",
-          "job_or_sensor": "instagram_profile_processor_coordination_sensor",
-          "permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1790416197005119",
           "snippet": "Sensor fail · instagram_profile_processor_coordination_sensor"
         }
       ],
