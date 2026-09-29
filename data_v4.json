@@ -1,6 +1,6 @@
 {
   "version": "4.1",
-  "generated_at_kst": "2026-09-29 15:03 KST",
+  "generated_at_kst": "2026-09-29 15:15 KST",
   "sources": {
     "inventory": "/workspace/dagster-job-inventory/jobs.json",
     "job_index": "storika/storika-mono python/data-pipeline/src/defs/README.md JOB-INDEX",
@@ -194,11 +194,18 @@
       "obsolete_candidate": false,
       "needs_review": false,
       "issues_summary": "배관 잡 · 최근 런 실패",
-      "fail_count_14d": 2,
-      "fail_count_30d": 2,
+      "fail_count_14d": 3,
+      "fail_count_30d": 3,
       "currently_failing": true,
-      "latest_fail_permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1790619072658249",
+      "latest_fail_permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1790661835789159",
       "failures": [
+        {
+          "ts_kst": "2026-09-29 15:03 KST",
+          "kind": "run_failure",
+          "job_or_sensor": "instagram_profiles_materialization",
+          "permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1790661835789159",
+          "snippet": "BadRequest: UPDATE/MERGE must match at most one source row for each target row (BigQuery)"
+        },
         {
           "ts_kst": "2026-09-29 03:11 KST",
           "kind": "run_failure",
