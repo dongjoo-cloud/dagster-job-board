@@ -1,6 +1,6 @@
 {
   "version": "4.1",
-  "generated_at_kst": "2026-09-30 15:09 KST",
+  "generated_at_kst": "2026-09-30 16:12 KST",
   "sources": {
     "inventory": "/workspace/dagster-job-inventory/jobs.json",
     "job_index": "storika/storika-mono python/data-pipeline/src/defs/README.md JOB-INDEX",
@@ -13,6 +13,8 @@
     "dagster_cloud_automation_captured_at_kst": "2026-09-20 15:37 KST",
     "slack_full_refresh_at_kst": "2026-09-28 15:03 KST",
     "slack_full_refresh": "full_refresh_1500: newest 200 msgs (p1+p2) + prior slack_*/dagster-noti-month; latest channel msg 2026-09-28 11:50; no msgs after light polls 12–14; asset_check excluded",
+    "slack_light_poll_at_kst": "2026-09-30 16:12 KST",
+    "slack_light_poll_note": "light_poll: instagram_profile_processor_submitter_run via instagram_profile_processor_coordination_sensor @15:20; 14d 52→53",
     "artifact_jobs": "/workspace/claude-artifact-jobs/jobs.json",
     "artifact_outline": "/workspace/claude-artifact-jobs/outline.md",
     "automation": "/workspace/dagster-job-board/dagster_cloud_automation.json",
@@ -2646,12 +2648,19 @@
       "intentional_wait": false,
       "obsolete_candidate": false,
       "needs_review": false,
-      "issues_summary": "슬랙 실패 14일 52회",
-      "fail_count_14d": 52,
-      "fail_count_30d": 57,
+      "issues_summary": "슬랙 실패 14일 53회",
+      "fail_count_14d": 53,
+      "fail_count_30d": 58,
       "currently_failing": true,
-      "latest_fail_permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1790731224567419",
+      "latest_fail_permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1790749218770049",
       "failures": [
+        {
+          "ts_kst": "2026-09-30 15:20 KST",
+          "kind": "sensor",
+          "job_or_sensor": "instagram_profile_processor_coordination_sensor",
+          "permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1790749218770049",
+          "snippet": "Sensor fail · instagram_profile_processor_coordination_sensor"
+        },
         {
           "ts_kst": "2026-09-30 10:20 KST",
           "kind": "sensor",
