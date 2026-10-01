@@ -1,6 +1,6 @@
 {
   "version": "4.1",
-  "generated_at_kst": "2026-10-01 11:18 KST",
+  "generated_at_kst": "2026-10-01 15:07 KST",
   "sources": {
     "inventory": "/workspace/dagster-job-inventory/jobs.json",
     "job_index": "storika/storika-mono python/data-pipeline/src/defs/README.md JOB-INDEX",
@@ -28,7 +28,7 @@
     "pipeline_issue": 9,
     "obsolete_candidate": 4,
     "cloud_issue": 3,
-    "slack_repeat": 14,
+    "slack_repeat": 13,
     "intentional_wait": 3,
     "needs_review": 2,
     "in_artifact": 53,
@@ -107,12 +107,19 @@
       "intentional_wait": false,
       "obsolete_candidate": false,
       "needs_review": false,
-      "issues_summary": "배관 잡 · 최근 런 실패 · 슬랙 실패 14일 6회",
-      "fail_count_14d": 6,
-      "fail_count_30d": 6,
+      "issues_summary": "배관 잡 · 최근 런 실패 · 슬랙 실패 14일 7회",
+      "fail_count_14d": 7,
+      "fail_count_30d": 7,
       "currently_failing": true,
-      "latest_fail_permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1790791544757759",
+      "latest_fail_permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1790834679436989",
       "failures": [
+        {
+          "ts_kst": "2026-10-01 15:04 KST",
+          "kind": "run_failure",
+          "job_or_sensor": "instagram_profiles_materialization",
+          "permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1790834679436989",
+          "snippet": "Run failure · instagram_profiles_materialization"
+        },
         {
           "ts_kst": "2026-10-01 03:05 KST",
           "kind": "run_failure",
@@ -139,13 +146,6 @@
           "kind": "run_failure",
           "job_or_sensor": "instagram_profiles_materialization",
           "permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1790661835789159",
-          "snippet": "Run failure · instagram_profiles_materialization"
-        },
-        {
-          "ts_kst": "2026-09-29 03:11 KST",
-          "kind": "run_failure",
-          "job_or_sensor": "instagram_profiles_materialization",
-          "permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1790619072658249",
           "snippet": "Run failure · instagram_profiles_materialization"
         }
       ],
@@ -200,11 +200,11 @@
       "latest_fail_permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1790820472934519",
       "failures": [
         {
-          "ts_kst": "2026-10-01 11:07:52 KST",
+          "ts_kst": "2026-10-01 11:07 KST",
           "kind": "run_failure",
           "job_or_sensor": "creator_post_sync_job",
           "permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1790820472934519",
-          "snippet": "RuntimeError: creator_post_sync dry_run=True: write is refused. Set dry_run=False to allow writes."
+          "snippet": "Run failure · creator_post_sync_job"
         },
         {
           "ts_kst": "2026-09-29 05:44 KST",
@@ -249,7 +249,7 @@
       "dagster_default_status": "STOPPED",
       "power": "off",
       "power_label": "꺼짐",
-      "notes": "JOB-INDEX상 schedule/sensor STOPPED · 최근 14일 실패 알림 있음(48h 밖일 수 있음)",
+      "notes": "JOB-INDEX상 schedule/sensor STOPPED",
       "tab": "discovery"
     },
     {
@@ -1010,14 +1010,14 @@
       ],
       "cloud_fail_visible": false,
       "cloud_status": "success",
-      "slack_repeat": true,
+      "slack_repeat": false,
       "cloud_issue": false,
       "pipeline_issue": false,
       "intentional_wait": false,
       "obsolete_candidate": false,
       "needs_review": false,
-      "issues_summary": "슬랙 실패 14일 5회",
-      "fail_count_14d": 5,
+      "issues_summary": "—",
+      "fail_count_14d": 4,
       "fail_count_30d": 10,
       "currently_failing": true,
       "latest_fail_permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1790815233899209",
@@ -1072,7 +1072,7 @@
       "dagster_default_status": "RUNNING",
       "power": "on",
       "power_label": "켜짐",
-      "notes": "최근 14일 실패 알림 있음(48h 밖일 수 있음)",
+      "notes": "",
       "tab": "campaign"
     },
     {
@@ -1474,8 +1474,8 @@
       "intentional_wait": false,
       "obsolete_candidate": false,
       "needs_review": false,
-      "issues_summary": "슬랙 실패 14일 36회",
-      "fail_count_14d": 36,
+      "issues_summary": "슬랙 실패 14일 30회",
+      "fail_count_14d": 30,
       "fail_count_30d": 78,
       "currently_failing": false,
       "latest_fail_permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1790082732883119",
@@ -1560,8 +1560,8 @@
       "intentional_wait": false,
       "obsolete_candidate": false,
       "needs_review": false,
-      "issues_summary": "슬랙 실패 14일 7회",
-      "fail_count_14d": 7,
+      "issues_summary": "슬랙 실패 14일 6회",
+      "fail_count_14d": 6,
       "fail_count_30d": 13,
       "currently_failing": false,
       "latest_fail_permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1789964175808599",
@@ -1646,8 +1646,8 @@
       "intentional_wait": false,
       "obsolete_candidate": false,
       "needs_review": false,
-      "issues_summary": "슬랙 실패 14일 37회",
-      "fail_count_14d": 37,
+      "issues_summary": "슬랙 실패 14일 30회",
+      "fail_count_14d": 30,
       "fail_count_30d": 81,
       "currently_failing": false,
       "latest_fail_permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1790082763108549",
@@ -2055,8 +2055,8 @@
       "intentional_wait": false,
       "obsolete_candidate": false,
       "needs_review": false,
-      "issues_summary": "슬랙 실패 14일 16회",
-      "fail_count_14d": 16,
+      "issues_summary": "슬랙 실패 14일 11회",
+      "fail_count_14d": 11,
       "fail_count_30d": 26,
       "currently_failing": false,
       "latest_fail_permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1789712134621689",
@@ -2448,11 +2448,11 @@
       "latest_fail_permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1790819238617899",
       "failures": [
         {
-          "ts_kst": "2026-10-01 10:47:18 KST",
+          "ts_kst": "2026-10-01 10:47 KST",
           "kind": "time_limit",
           "job_or_sensor": "instagram_profile_metadata_updater_run",
           "permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1790819238617899",
-          "snippet": "Exceeded run time limit of 1 hour · instagram_profile_metadata_updater_run (sensor instagram_profile_metadata_coordinator_sensor)"
+          "snippet": "Exceeded run time limit · instagram_profile_metadata_updater_run"
         }
       ],
       "schedule_text": "sensor `instagram_profile_metadata_coordinator_sensor` (RUNNING)",
@@ -2469,7 +2469,7 @@
       "dagster_default_status": "RUNNING",
       "power": "on",
       "power_label": "켜짐",
-      "notes": "최근 실패 알림 없음(성공 확정 아님)",
+      "notes": "",
       "tab": "discovery"
     },
     {
@@ -2556,11 +2556,11 @@
       "latest_fail_permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1790817612869689",
       "failures": [
         {
-          "ts_kst": "2026-10-01 10:20:12 KST",
+          "ts_kst": "2026-10-01 10:20 KST",
           "kind": "sensor",
           "job_or_sensor": "instagram_profile_processor_coordination_sensor",
           "permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1790817612869689",
-          "snippet": "instagram_profile_processor_coordination_sensor failing since Oct 1, 2026 at 1:18 AM (UTC)"
+          "snippet": "Sensor fail · instagram_profile_processor_coordination_sensor"
         },
         {
           "ts_kst": "2026-10-01 06:20 KST",
@@ -2721,8 +2721,8 @@
       "intentional_wait": false,
       "obsolete_candidate": false,
       "needs_review": false,
-      "issues_summary": "슬랙 실패 14일 10회",
-      "fail_count_14d": 10,
+      "issues_summary": "슬랙 실패 14일 6회",
+      "fail_count_14d": 6,
       "fail_count_30d": 16,
       "currently_failing": false,
       "latest_fail_permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1790082913766749",
@@ -3365,18 +3365,18 @@
       "intentional_wait": false,
       "obsolete_candidate": false,
       "needs_review": false,
-      "issues_summary": "슬랙 실패 14일 53회",
-      "fail_count_14d": 53,
+      "issues_summary": "슬랙 실패 14일 46회",
+      "fail_count_14d": 46,
       "fail_count_30d": 101,
       "currently_failing": true,
       "latest_fail_permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1790818245334369",
       "failures": [
         {
-          "ts_kst": "2026-10-01 10:30:45 KST",
+          "ts_kst": "2026-10-01 10:30 KST",
           "kind": "time_limit",
           "job_or_sensor": "tiktok_apify_scraper_loader",
           "permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1790818245334369",
-          "snippet": "Exceeded run time limit of 1 hour · tiktok_apify_scraper_loader (sensor tiktok_scraper_coordinator_sensor)"
+          "snippet": "Exceeded run time limit · tiktok_apify_scraper_loader"
         },
         {
           "ts_kst": "2026-09-22 22:10 KST",
@@ -3421,7 +3421,7 @@
       "dagster_default_status": "STOPPED",
       "power": "off",
       "power_label": "꺼짐",
-      "notes": "JOB-INDEX상 schedule/sensor STOPPED · 최근 14일 실패 알림 있음(48h 밖일 수 있음)",
+      "notes": "JOB-INDEX상 schedule/sensor STOPPED",
       "tab": "discovery"
     },
     {
@@ -3518,18 +3518,10 @@
       "needs_review": false,
       "issues_summary": "—",
       "fail_count_14d": 0,
-      "fail_count_30d": 1,
+      "fail_count_30d": 0,
       "currently_failing": false,
-      "latest_fail_permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1788237133237549",
-      "failures": [
-        {
-          "ts_kst": "2026-09-01 13:32 KST",
-          "kind": "run_failure",
-          "job_or_sensor": "tiktok_campaign_post_updater",
-          "permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1788237133237549",
-          "snippet": "Run failure · tiktok_campaign_post_updater"
-        }
-      ],
+      "latest_fail_permalink": null,
+      "failures": [],
       "schedule_text": "schedule `campaign_tiktok_post_updater_schedule` `30 */4 * * *` (RUNNING)",
       "cron": "30 */4 * * *",
       "trigger_type": "schedule",
@@ -3576,7 +3568,7 @@
       "needs_review": false,
       "issues_summary": "—",
       "fail_count_14d": 2,
-      "fail_count_30d": 10,
+      "fail_count_30d": 9,
       "currently_failing": false,
       "latest_fail_permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1789751667055779",
       "failures": [
@@ -3790,8 +3782,8 @@
       "intentional_wait": true,
       "obsolete_candidate": false,
       "needs_review": false,
-      "issues_summary": "슬랙 실패 14일 43회 · 의도적 OFF · TT 이미지 청크 (미착수)",
-      "fail_count_14d": 43,
+      "issues_summary": "슬랙 실패 14일 37회 · 의도적 OFF · TT 이미지 청크 (미착수)",
+      "fail_count_14d": 37,
       "fail_count_30d": 115,
       "currently_failing": false,
       "latest_fail_permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1790082582102639",
