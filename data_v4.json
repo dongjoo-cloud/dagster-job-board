@@ -1,6 +1,6 @@
 {
   "version": "4.1",
-  "generated_at_kst": "2026-10-01 09:08 KST",
+  "generated_at_kst": "2026-10-01 10:15 KST",
   "sources": {
     "inventory": "/workspace/dagster-job-inventory/jobs.json",
     "job_index": "storika/storika-mono python/data-pipeline/src/defs/README.md JOB-INDEX",
@@ -15,6 +15,7 @@
     "slack_full_refresh": "full_refresh_1500: newest 200 msgs (p1+p2) + prior slack_*/dagster-noti-month; latest channel msg 2026-09-28 11:50; no msgs after light polls 12–14; asset_check excluded",
     "slack_light_poll_at_kst": "2026-09-30 16:12 KST",
     "slack_light_poll_note": "light_poll: instagram_profile_processor_submitter_run via instagram_profile_processor_coordination_sensor @15:20; 14d 52→53",
+    "slack_light_poll": "slack_light_poll_20261001_1014.json",
     "artifact_jobs": "/workspace/claude-artifact-jobs/jobs.json",
     "artifact_outline": "/workspace/claude-artifact-jobs/outline.md",
     "automation": "/workspace/dagster-job-board/dagster_cloud_automation.json",
@@ -27,7 +28,7 @@
     "pipeline_issue": 9,
     "obsolete_candidate": 4,
     "cloud_issue": 3,
-    "slack_repeat": 13,
+    "slack_repeat": 14,
     "intentional_wait": 3,
     "needs_review": 2,
     "in_artifact": 53,
@@ -1009,18 +1010,25 @@
       ],
       "cloud_fail_visible": false,
       "cloud_status": "success",
-      "slack_repeat": false,
+      "slack_repeat": true,
       "cloud_issue": false,
       "pipeline_issue": false,
       "intentional_wait": false,
       "obsolete_candidate": false,
       "needs_review": false,
-      "issues_summary": "—",
-      "fail_count_14d": 4,
-      "fail_count_30d": 9,
-      "currently_failing": false,
-      "latest_fail_permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1790296888113319",
+      "issues_summary": "슬랙 실패 14일 5회",
+      "fail_count_14d": 5,
+      "fail_count_30d": 10,
+      "currently_failing": true,
+      "latest_fail_permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1790815233899209",
       "failures": [
+        {
+          "ts_kst": "2026-10-01 09:40 KST",
+          "kind": "time_limit",
+          "job_or_sensor": "campaign_engagement_mart_sync_job",
+          "permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1790815233899209",
+          "snippet": "Exceeded run time limit · campaign_engagement_mart_sync_job"
+        },
         {
           "ts_kst": "2026-09-25 09:41 KST",
           "kind": "time_limit",
@@ -1047,13 +1055,6 @@
           "kind": "time_limit",
           "job_or_sensor": "campaign_engagement_mart_sync_job",
           "permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1789605661388579",
-          "snippet": "Exceeded run time limit · campaign_engagement_mart_sync_job"
-        },
-        {
-          "ts_kst": "2026-09-16 09:40 KST",
-          "kind": "time_limit",
-          "job_or_sensor": "campaign_engagement_mart_sync_job",
-          "permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1789519250877529",
           "snippet": "Exceeded run time limit · campaign_engagement_mart_sync_job"
         }
       ],
