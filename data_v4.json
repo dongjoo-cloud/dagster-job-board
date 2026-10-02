@@ -1,6 +1,6 @@
 {
   "version": "4.1",
-  "generated_at_kst": "2026-10-01 15:07 KST",
+  "generated_at_kst": "2026-10-02 09:13 KST",
   "sources": {
     "inventory": "/workspace/dagster-job-inventory/jobs.json",
     "job_index": "storika/storika-mono python/data-pipeline/src/defs/README.md JOB-INDEX",
@@ -23,12 +23,12 @@
   },
   "kpis": {
     "total": 85,
-    "running": 59,
-    "running_approx_48h": 60,
-    "pipeline_issue": 9,
+    "running": 63,
+    "running_approx_48h": 65,
+    "pipeline_issue": 6,
     "obsolete_candidate": 4,
-    "cloud_issue": 3,
-    "slack_repeat": 13,
+    "cloud_issue": 4,
+    "slack_repeat": 12,
     "intentional_wait": 3,
     "needs_review": 2,
     "in_artifact": 53,
@@ -53,7 +53,7 @@
     "센서 실패는 job의 sensors/schedules 정확 매칭 우선, 이후 stem 보조.",
     "created_at는 정의 파일 경로의 GitHub 최초 커밋일(best-effort; rename 시 이전 이력 누락 가능).",
     "JOB-INDEX RUNNING/STOPPED는 문서 생성 시점 기준(실시간 Dagster Cloud 상태 아님).",
-    "Slack 윈도우: 2026-09-01 ~ 2026-10-01 KST; currently_failing = last 48h.",
+    "Slack 윈도우: 2026-09-02 ~ 2026-10-02 KST; currently_failing = last 48h.",
     "Slack permalink는 Message TS로 구성(https://storika-ai.slack.com/archives/C0A3KBPU2P4/p…).",
     "obsolete_후보 = artifact 배관 미매핑 + 명확히 캠페인/운영이 아님 (확정 폐기 아님). 의도적대기 = TT 이미지청킹·STT 등 비용/미시작."
   ],
@@ -81,6 +81,92 @@
   ],
   "jobs": [
     {
+      "name": "instagram_apify_profile_scraper_loader",
+      "category": "discovery_supporting",
+      "category_label": "Discovery서포트",
+      "directory": "instagram/ingestion/profile_scraper/loader",
+      "source_file": "instagram/ingestion/profile_scraper/loader/definitions.py",
+      "pipeline_role": "로더(IG profile)",
+      "in_artifact": true,
+      "is_running": true,
+      "within_48h": true,
+      "toggle_on": true,
+      "toggle_source": "automation",
+      "schedule_active_hint": true,
+      "cloud_last_run": "2026-10-02 00:13 KST",
+      "cloud_recent_runs": [
+        "SUCCESS",
+        "SUCCESS",
+        "FAILURE"
+      ],
+      "cloud_fail_visible": true,
+      "cloud_status": "mixed",
+      "slack_repeat": true,
+      "cloud_issue": true,
+      "pipeline_issue": true,
+      "intentional_wait": false,
+      "obsolete_candidate": false,
+      "needs_review": false,
+      "issues_summary": "배관 잡 · 최근 런 혼재 · 슬랙 실패 14일 22회",
+      "fail_count_14d": 22,
+      "fail_count_30d": 81,
+      "currently_failing": false,
+      "latest_fail_permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1790082763108549",
+      "failures": [
+        {
+          "ts_kst": "2026-09-22 22:12 KST",
+          "kind": "sensor",
+          "job_or_sensor": "profile_scraper_coordinator_sensor",
+          "permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1790082763108549",
+          "snippet": "Sensor fail · profile_scraper_coordinator_sensor"
+        },
+        {
+          "ts_kst": "2026-09-22 21:27 KST",
+          "kind": "sensor",
+          "job_or_sensor": "profile_scraper_coordinator_sensor",
+          "permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1790080053648829",
+          "snippet": "Sensor fail · profile_scraper_coordinator_sensor"
+        },
+        {
+          "ts_kst": "2026-09-22 15:40 KST",
+          "kind": "sensor",
+          "job_or_sensor": "profile_scraper_coordinator_sensor",
+          "permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1790059239796789",
+          "snippet": "Sensor fail · profile_scraper_coordinator_sensor"
+        },
+        {
+          "ts_kst": "2026-09-21 15:08 KST",
+          "kind": "sensor",
+          "job_or_sensor": "profile_scraper_coordinator_sensor",
+          "permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1789970889004269",
+          "snippet": "Sensor fail · profile_scraper_coordinator_sensor"
+        },
+        {
+          "ts_kst": "2026-09-21 14:38 KST",
+          "kind": "sensor",
+          "job_or_sensor": "profile_scraper_coordinator_sensor",
+          "permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1789969082727649",
+          "snippet": "Sensor fail · profile_scraper_coordinator_sensor"
+        }
+      ],
+      "schedule_text": "sensor `profile_scraper_coordinator_sensor` (RUNNING)",
+      "cron": null,
+      "trigger_type": "sensor",
+      "sensors": [
+        "profile_scraper_coordinator_sensor"
+      ],
+      "schedules": [],
+      "purpose": "IG Apify 수집/로더",
+      "purpose_blurb": "Loads full Instagram profile + post data from Apify Profile Scraper runs into ClickHouse `apify_instagram_profiles` / `apify_instagram_posts`, and downgrades va",
+      "rationale": "Ingest/mart/image/phase1/profile pipeline feeding Discovery materials.",
+      "created_at": "2026-03-06",
+      "dagster_default_status": "RUNNING",
+      "power": "on",
+      "power_label": "켜짐",
+      "notes": "최근 14일 실패 알림 있음(48h 밖일 수 있음)",
+      "tab": "discovery"
+    },
+    {
       "name": "instagram_profiles_materialization",
       "category": "discovery_supporting",
       "category_label": "Discovery서포트",
@@ -93,7 +179,7 @@
       "toggle_on": true,
       "toggle_source": "automation",
       "schedule_active_hint": true,
-      "cloud_last_run": "2026-10-01 03:05 KST",
+      "cloud_last_run": "2026-10-02 03:07 KST",
       "cloud_recent_runs": [
         "FAILURE",
         "FAILURE",
@@ -107,12 +193,19 @@
       "intentional_wait": false,
       "obsolete_candidate": false,
       "needs_review": false,
-      "issues_summary": "배관 잡 · 최근 런 실패 · 슬랙 실패 14일 7회",
-      "fail_count_14d": 7,
-      "fail_count_30d": 7,
+      "issues_summary": "배관 잡 · 최근 런 실패 · 슬랙 실패 14일 8회",
+      "fail_count_14d": 8,
+      "fail_count_30d": 8,
       "currently_failing": true,
-      "latest_fail_permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1790834679436989",
+      "latest_fail_permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1790878033678799",
       "failures": [
+        {
+          "ts_kst": "2026-10-02 03:07 KST",
+          "kind": "run_failure",
+          "job_or_sensor": "instagram_profiles_materialization",
+          "permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1790878033678799",
+          "snippet": "Run failure · instagram_profiles_materialization"
+        },
         {
           "ts_kst": "2026-10-01 15:04 KST",
           "kind": "run_failure",
@@ -139,13 +232,6 @@
           "kind": "run_failure",
           "job_or_sensor": "instagram_profiles_materialization",
           "permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1790705251123029",
-          "snippet": "Run failure · instagram_profiles_materialization"
-        },
-        {
-          "ts_kst": "2026-09-29 15:03 KST",
-          "kind": "run_failure",
-          "job_or_sensor": "instagram_profiles_materialization",
-          "permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1790661835789159",
           "snippet": "Run failure · instagram_profiles_materialization"
         }
       ],
@@ -179,7 +265,7 @@
       "toggle_on": false,
       "toggle_source": "automation",
       "schedule_active_hint": true,
-      "cloud_last_run": "2026-10-01 06:13 KST",
+      "cloud_last_run": "2026-10-02 07:07 KST",
       "cloud_recent_runs": [
         "SUCCESS",
         "SUCCESS",
@@ -193,12 +279,33 @@
       "intentional_wait": false,
       "obsolete_candidate": false,
       "needs_review": false,
-      "issues_summary": "배관 잡 · 토글 OFF · 슬랙 실패 14일 47회",
-      "fail_count_14d": 47,
-      "fail_count_30d": 48,
+      "issues_summary": "배관 잡 · 토글 OFF · 슬랙 실패 14일 48회",
+      "fail_count_14d": 48,
+      "fail_count_30d": 51,
       "currently_failing": true,
-      "latest_fail_permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1790820472934519",
+      "latest_fail_permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1790885104538069",
       "failures": [
+        {
+          "ts_kst": "2026-10-02 05:05 KST",
+          "kind": "run_failure",
+          "job_or_sensor": "creator_post_sync_job",
+          "permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1790885104538069",
+          "snippet": "Run failure · creator_post_sync_job"
+        },
+        {
+          "ts_kst": "2026-10-02 04:44 KST",
+          "kind": "run_failure",
+          "job_or_sensor": "creator_post_sync_job",
+          "permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1790883869649439",
+          "snippet": "Run failure · creator_post_sync_job"
+        },
+        {
+          "ts_kst": "2026-10-02 03:50 KST",
+          "kind": "run_failure",
+          "job_or_sensor": "creator_post_sync_job",
+          "permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1790880647313559",
+          "snippet": "Run failure · creator_post_sync_job"
+        },
         {
           "ts_kst": "2026-10-01 11:07 KST",
           "kind": "run_failure",
@@ -211,27 +318,6 @@
           "kind": "run_failure",
           "job_or_sensor": "creator_post_sync_job",
           "permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1790628285785229",
-          "snippet": "Run failure · creator_post_sync_job"
-        },
-        {
-          "ts_kst": "2026-09-29 05:20 KST",
-          "kind": "run_failure",
-          "job_or_sensor": "creator_post_sync_job",
-          "permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1790626810168009",
-          "snippet": "Run failure · creator_post_sync_job"
-        },
-        {
-          "ts_kst": "2026-09-29 04:59 KST",
-          "kind": "run_failure",
-          "job_or_sensor": "creator_post_sync_job",
-          "permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1790625575012389",
-          "snippet": "Run failure · creator_post_sync_job"
-        },
-        {
-          "ts_kst": "2026-09-29 04:39 KST",
-          "kind": "run_failure",
-          "job_or_sensor": "creator_post_sync_job",
-          "permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1790624340691989",
           "snippet": "Run failure · creator_post_sync_job"
         }
       ],
@@ -250,56 +336,6 @@
       "power": "off",
       "power_label": "꺼짐",
       "notes": "JOB-INDEX상 schedule/sensor STOPPED",
-      "tab": "discovery"
-    },
-    {
-      "name": "instagram_apify_creator_discovery_coordinator",
-      "category": "discovery_supporting",
-      "category_label": "Discovery서포트",
-      "directory": "instagram/discovery/creator_discovery_coordinator",
-      "source_file": "instagram/discovery/creator_discovery_coordinator/definitions.py",
-      "pipeline_role": "Discovery 수집조율",
-      "in_artifact": true,
-      "is_running": false,
-      "within_48h": false,
-      "toggle_on": true,
-      "toggle_source": "automation",
-      "schedule_active_hint": true,
-      "cloud_last_run": "2026-09-28 15:04 KST",
-      "cloud_recent_runs": [
-        "SUCCESS",
-        "SUCCESS",
-        "SUCCESS"
-      ],
-      "cloud_fail_visible": false,
-      "cloud_status": "success",
-      "slack_repeat": false,
-      "cloud_issue": false,
-      "pipeline_issue": true,
-      "intentional_wait": false,
-      "obsolete_candidate": false,
-      "needs_review": false,
-      "issues_summary": "배관 잡 · 48h 내 런 없음",
-      "fail_count_14d": 0,
-      "fail_count_30d": 0,
-      "currently_failing": false,
-      "latest_fail_permalink": null,
-      "failures": [],
-      "schedule_text": "schedule `instagram_apify_creator_discovery_coordinator_schedule` `0 6 */3 * *` (STOPPED)",
-      "cron": "0 6 */3 * *",
-      "trigger_type": "schedule",
-      "sensors": [],
-      "schedules": [
-        "instagram_apify_creator_discovery_coordinator_schedule"
-      ],
-      "purpose": "IG 크리에이터 디스커버리 수집",
-      "purpose_blurb": "Self-reinforcing discovery loop that expands the creator pool by scraping \"hot\" mentions/hashtags found in existing data.",
-      "rationale": "Discovery-oriented collection/coordination feeding the corpus.",
-      "created_at": "2026-03-06",
-      "dagster_default_status": "STOPPED",
-      "power": "off",
-      "power_label": "꺼짐",
-      "notes": "JOB-INDEX상 schedule/sensor STOPPED · 최근 실패 알림 없음(성공 확정 아님)",
       "tab": "discovery"
     },
     {
@@ -439,192 +475,6 @@
       "tab": "discovery"
     },
     {
-      "name": "instagram_posts_phase1_submitter_run",
-      "category": "discovery_supporting",
-      "category_label": "Discovery서포트",
-      "directory": "instagram/enrichment/posts_phase1_submitter",
-      "source_file": "instagram/enrichment/posts_phase1_submitter/definitions.py",
-      "pipeline_role": "라벨제출(IG)",
-      "in_artifact": true,
-      "is_running": false,
-      "within_48h": false,
-      "toggle_on": true,
-      "toggle_source": "automation",
-      "schedule_active_hint": true,
-      "cloud_last_run": "2026-09-22 21:17 KST",
-      "cloud_recent_runs": [
-        "SUCCESS",
-        "SUCCESS",
-        "SUCCESS"
-      ],
-      "cloud_fail_visible": false,
-      "cloud_status": "success",
-      "slack_repeat": true,
-      "cloud_issue": false,
-      "pipeline_issue": true,
-      "intentional_wait": false,
-      "obsolete_candidate": false,
-      "needs_review": false,
-      "issues_summary": "배관 잡 · 48h 내 런 없음 · 슬랙 실패 14일 18회",
-      "fail_count_14d": 18,
-      "fail_count_30d": 37,
-      "currently_failing": false,
-      "latest_fail_permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1790074874602169",
-      "failures": [
-        {
-          "ts_kst": "2026-09-22 20:01 KST",
-          "kind": "time_limit",
-          "job_or_sensor": "instagram_posts_phase1_submitter_run",
-          "permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1790074874602169",
-          "snippet": "Exceeded run time limit · instagram_posts_phase1_submitter_run"
-        },
-        {
-          "ts_kst": "2026-09-22 20:00 KST",
-          "kind": "time_limit",
-          "job_or_sensor": "instagram_posts_phase1_submitter_run",
-          "permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1790074814397189",
-          "snippet": "Exceeded run time limit · instagram_posts_phase1_submitter_run"
-        },
-        {
-          "ts_kst": "2026-09-22 19:59 KST",
-          "kind": "time_limit",
-          "job_or_sensor": "instagram_posts_phase1_submitter_run",
-          "permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1790074783995879",
-          "snippet": "Exceeded run time limit · instagram_posts_phase1_submitter_run"
-        },
-        {
-          "ts_kst": "2026-09-22 18:53 KST",
-          "kind": "time_limit",
-          "job_or_sensor": "instagram_posts_phase1_submitter_run",
-          "permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1790070839776349",
-          "snippet": "Exceeded run time limit · instagram_posts_phase1_submitter_run"
-        },
-        {
-          "ts_kst": "2026-09-22 18:02 KST",
-          "kind": "run_failure",
-          "job_or_sensor": "instagram_posts_phase1_submitter_run",
-          "permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1790067766640759",
-          "snippet": "Run failure · instagram_posts_phase1_submitter_run"
-        }
-      ],
-      "schedule_text": "sensor `instagram_posts_phase1_submitter_coordination_sensor` (RUNNING)",
-      "cron": null,
-      "trigger_type": "sensor",
-      "sensors": [
-        "instagram_posts_phase1_submitter_coordination_sensor"
-      ],
-      "schedules": [],
-      "purpose": "IG 포스트/프로필  enrichment",
-      "purpose_blurb": "Submits Phase 1 (structured data extraction) batch jobs to Vertex AI for Instagram posts that have completed image processing. Asset `instagram_posts_phase1_sub",
-      "rationale": "Ingest/mart/image/phase1/profile pipeline feeding Discovery materials.",
-      "created_at": "2026-03-06",
-      "dagster_default_status": "RUNNING",
-      "power": "on",
-      "power_label": "켜짐",
-      "notes": "최근 14일 실패 알림 있음(48h 밖일 수 있음)",
-      "tab": "discovery"
-    },
-    {
-      "name": "tiktok_posts_phase1_monitor_run",
-      "category": "discovery_supporting",
-      "category_label": "Discovery서포트",
-      "directory": "tiktok/enrichment/posts_phase1_monitor",
-      "source_file": "tiktok/enrichment/posts_phase1_monitor/definitions.py",
-      "pipeline_role": "라벨적재(TT)",
-      "in_artifact": true,
-      "is_running": false,
-      "within_48h": false,
-      "toggle_on": true,
-      "toggle_source": "automation",
-      "schedule_active_hint": true,
-      "cloud_last_run": "2026-09-22 10:56 KST",
-      "cloud_recent_runs": [
-        "SUCCESS",
-        "SUCCESS",
-        "SUCCESS"
-      ],
-      "cloud_fail_visible": false,
-      "cloud_status": "success",
-      "slack_repeat": false,
-      "cloud_issue": false,
-      "pipeline_issue": true,
-      "intentional_wait": false,
-      "obsolete_candidate": false,
-      "needs_review": false,
-      "issues_summary": "배관 잡 · 48h 내 런 없음",
-      "fail_count_14d": 0,
-      "fail_count_30d": 0,
-      "currently_failing": false,
-      "latest_fail_permalink": null,
-      "failures": [],
-      "schedule_text": "sensor `tiktok_posts_phase1_monitor_coordination_sensor` (RUNNING)",
-      "cron": null,
-      "trigger_type": "sensor",
-      "sensors": [
-        "tiktok_posts_phase1_monitor_coordination_sensor"
-      ],
-      "schedules": [],
-      "purpose": "TT 포스트/프로필 enrichment",
-      "purpose_blurb": "The TikTok Post Phase 1 Monitor checks the status of Phase 1 batch jobs submitted to Vertex AI, processes completed results, and inserts extracted posts to Clic",
-      "rationale": "Ingest/mart/image/phase1/profile pipeline feeding Discovery materials.",
-      "created_at": "2026-03-06",
-      "dagster_default_status": "RUNNING",
-      "power": "on",
-      "power_label": "켜짐",
-      "notes": "최근 실패 알림 없음(성공 확정 아님)",
-      "tab": "discovery"
-    },
-    {
-      "name": "tiktok_posts_phase1_submitter_run",
-      "category": "discovery_supporting",
-      "category_label": "Discovery서포트",
-      "directory": "tiktok/enrichment/posts_phase1_submitter",
-      "source_file": "tiktok/enrichment/posts_phase1_submitter/definitions.py",
-      "pipeline_role": "라벨제출(TT)",
-      "in_artifact": true,
-      "is_running": false,
-      "within_48h": false,
-      "toggle_on": true,
-      "toggle_source": "automation",
-      "schedule_active_hint": true,
-      "cloud_last_run": "2026-09-21 16:13 KST",
-      "cloud_recent_runs": [
-        "SUCCESS",
-        "SUCCESS",
-        "SUCCESS"
-      ],
-      "cloud_fail_visible": false,
-      "cloud_status": "success",
-      "slack_repeat": false,
-      "cloud_issue": false,
-      "pipeline_issue": true,
-      "intentional_wait": false,
-      "obsolete_candidate": false,
-      "needs_review": false,
-      "issues_summary": "배관 잡 · 48h 내 런 없음",
-      "fail_count_14d": 0,
-      "fail_count_30d": 0,
-      "currently_failing": false,
-      "latest_fail_permalink": null,
-      "failures": [],
-      "schedule_text": "sensor `tiktok_posts_phase1_submitter_coordination_sensor` (RUNNING)",
-      "cron": null,
-      "trigger_type": "sensor",
-      "sensors": [
-        "tiktok_posts_phase1_submitter_coordination_sensor"
-      ],
-      "schedules": [],
-      "purpose": "TT 포스트/프로필 enrichment",
-      "purpose_blurb": "The TikTok Post Phase 1 Submitter submits batch jobs to Vertex AI for structured data extraction from TikTok posts. It processes chunks that have completed imag",
-      "rationale": "Ingest/mart/image/phase1/profile pipeline feeding Discovery materials.",
-      "created_at": "2026-03-06",
-      "dagster_default_status": "RUNNING",
-      "power": "on",
-      "power_label": "켜짐",
-      "notes": "최근 실패 알림 없음(성공 확정 아님)",
-      "tab": "discovery"
-    },
-    {
       "name": "tiktok_profile_image_processor_run",
       "category": "discovery_supporting",
       "category_label": "Discovery서포트",
@@ -687,7 +537,7 @@
       "toggle_on": true,
       "toggle_source": "automation",
       "schedule_active_hint": true,
-      "cloud_last_run": "2026-10-01 04:01 KST",
+      "cloud_last_run": "2026-10-02 04:03 KST",
       "cloud_recent_runs": [
         "SUCCESS",
         "SUCCESS",
@@ -737,10 +587,10 @@
       "toggle_on": true,
       "toggle_source": "automation",
       "schedule_active_hint": true,
-      "cloud_last_run": "2026-10-01 06:16 KST",
+      "cloud_last_run": "2026-10-02 06:17 KST",
       "cloud_recent_runs": [
-        "FAILURE",
         "SUCCESS",
+        "FAILURE",
         "SUCCESS"
       ],
       "cloud_fail_visible": true,
@@ -751,8 +601,8 @@
       "intentional_wait": false,
       "obsolete_candidate": false,
       "needs_review": false,
-      "issues_summary": "Cloud 최근 런 혼재 · 슬랙 실패 14일 10회",
-      "fail_count_14d": 10,
+      "issues_summary": "Cloud 최근 런 혼재 · 슬랙 실패 14일 9회",
+      "fail_count_14d": 9,
       "fail_count_30d": 14,
       "currently_failing": true,
       "latest_fail_permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1790803046073839",
@@ -823,7 +673,7 @@
       "toggle_on": true,
       "toggle_source": "automation",
       "schedule_active_hint": true,
-      "cloud_last_run": "2026-10-01 04:30 KST",
+      "cloud_last_run": "2026-10-02 04:31 KST",
       "cloud_recent_runs": [
         "SUCCESS",
         "SUCCESS",
@@ -873,7 +723,7 @@
       "toggle_on": true,
       "toggle_source": "automation",
       "schedule_active_hint": true,
-      "cloud_last_run": "2026-10-01 04:50 KST",
+      "cloud_last_run": "2026-10-02 04:50 KST",
       "cloud_recent_runs": [
         "SUCCESS",
         "SUCCESS",
@@ -923,7 +773,7 @@
       "toggle_on": true,
       "toggle_source": "automation",
       "schedule_active_hint": true,
-      "cloud_last_run": "2026-10-01 05:16 KST",
+      "cloud_last_run": "2026-10-02 05:16 KST",
       "cloud_recent_runs": [
         "SUCCESS",
         "SUCCESS",
@@ -1002,9 +852,9 @@
       "toggle_on": true,
       "toggle_source": "automation",
       "schedule_active_hint": true,
-      "cloud_last_run": "2026-10-01 08:40 KST",
+      "cloud_last_run": "2026-10-01 09:42 KST",
       "cloud_recent_runs": [
-        "STARTED",
+        "SUCCESS",
         "SUCCESS",
         "SUCCESS"
       ],
@@ -1088,7 +938,7 @@
       "toggle_on": true,
       "toggle_source": "automation",
       "schedule_active_hint": true,
-      "cloud_last_run": "2026-10-01 05:31 KST",
+      "cloud_last_run": "2026-10-02 05:31 KST",
       "cloud_recent_runs": [
         "SUCCESS",
         "SUCCESS",
@@ -1138,7 +988,7 @@
       "toggle_on": true,
       "toggle_source": "automation",
       "schedule_active_hint": true,
-      "cloud_last_run": "2026-10-01 06:28 KST",
+      "cloud_last_run": "2026-10-02 06:26 KST",
       "cloud_recent_runs": [
         "SUCCESS",
         "SUCCESS",
@@ -1224,7 +1074,7 @@
       "toggle_on": true,
       "toggle_source": "automation",
       "schedule_active_hint": true,
-      "cloud_last_run": "2026-10-01 05:02 KST",
+      "cloud_last_run": "2026-10-02 05:02 KST",
       "cloud_recent_runs": [
         "SUCCESS",
         "SUCCESS",
@@ -1274,7 +1124,7 @@
       "toggle_on": true,
       "toggle_source": "automation",
       "schedule_active_hint": true,
-      "cloud_last_run": "2026-10-01 07:32 KST",
+      "cloud_last_run": "2026-10-02 07:33 KST",
       "cloud_recent_runs": [
         "SUCCESS",
         "SUCCESS",
@@ -1324,7 +1174,7 @@
       "toggle_on": true,
       "toggle_source": "automation",
       "schedule_active_hint": true,
-      "cloud_last_run": "2026-10-01 05:18 KST",
+      "cloud_last_run": "2026-10-02 05:21 KST",
       "cloud_recent_runs": [
         "SUCCESS",
         "SUCCESS",
@@ -1410,7 +1260,7 @@
       "toggle_on": true,
       "toggle_source": "automation",
       "schedule_active_hint": true,
-      "cloud_last_run": "2026-10-01 07:02 KST",
+      "cloud_last_run": "2026-10-02 07:02 KST",
       "cloud_recent_runs": [
         "SUCCESS",
         "SUCCESS",
@@ -1448,6 +1298,56 @@
       "tab": "discovery"
     },
     {
+      "name": "instagram_apify_creator_discovery_coordinator",
+      "category": "discovery_supporting",
+      "category_label": "Discovery서포트",
+      "directory": "instagram/discovery/creator_discovery_coordinator",
+      "source_file": "instagram/discovery/creator_discovery_coordinator/definitions.py",
+      "pipeline_role": "Discovery 수집조율",
+      "in_artifact": true,
+      "is_running": true,
+      "within_48h": true,
+      "toggle_on": true,
+      "toggle_source": "automation",
+      "schedule_active_hint": true,
+      "cloud_last_run": "2026-10-01 15:04 KST",
+      "cloud_recent_runs": [
+        "SUCCESS",
+        "SUCCESS",
+        "SUCCESS"
+      ],
+      "cloud_fail_visible": false,
+      "cloud_status": "success",
+      "slack_repeat": false,
+      "cloud_issue": false,
+      "pipeline_issue": false,
+      "intentional_wait": false,
+      "obsolete_candidate": false,
+      "needs_review": false,
+      "issues_summary": "—",
+      "fail_count_14d": 0,
+      "fail_count_30d": 0,
+      "currently_failing": false,
+      "latest_fail_permalink": null,
+      "failures": [],
+      "schedule_text": "schedule `instagram_apify_creator_discovery_coordinator_schedule` `0 6 */3 * *` (STOPPED)",
+      "cron": "0 6 */3 * *",
+      "trigger_type": "schedule",
+      "sensors": [],
+      "schedules": [
+        "instagram_apify_creator_discovery_coordinator_schedule"
+      ],
+      "purpose": "IG 크리에이터 디스커버리 수집",
+      "purpose_blurb": "Self-reinforcing discovery loop that expands the creator pool by scraping \"hot\" mentions/hashtags found in existing data.",
+      "rationale": "Discovery-oriented collection/coordination feeding the corpus.",
+      "created_at": "2026-03-06",
+      "dagster_default_status": "STOPPED",
+      "power": "off",
+      "power_label": "꺼짐",
+      "notes": "JOB-INDEX상 schedule/sensor STOPPED · 최근 실패 알림 없음(성공 확정 아님)",
+      "tab": "discovery"
+    },
+    {
       "name": "instagram_apify_discovery_scraper_loader",
       "category": "discovery_supporting",
       "category_label": "Discovery서포트",
@@ -1460,7 +1360,7 @@
       "toggle_on": true,
       "toggle_source": "automation",
       "schedule_active_hint": true,
-      "cloud_last_run": "2026-10-01 05:31 KST",
+      "cloud_last_run": "2026-10-01 20:29 KST",
       "cloud_recent_runs": [
         "SUCCESS",
         "SUCCESS",
@@ -1474,8 +1374,8 @@
       "intentional_wait": false,
       "obsolete_candidate": false,
       "needs_review": false,
-      "issues_summary": "슬랙 실패 14일 30회",
-      "fail_count_14d": 30,
+      "issues_summary": "슬랙 실패 14일 22회",
+      "fail_count_14d": 22,
       "fail_count_30d": 78,
       "currently_failing": false,
       "latest_fail_permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1790082732883119",
@@ -1546,7 +1446,7 @@
       "toggle_on": true,
       "toggle_source": "automation",
       "schedule_active_hint": true,
-      "cloud_last_run": "2026-10-01 05:40 KST",
+      "cloud_last_run": "2026-10-01 20:31 KST",
       "cloud_recent_runs": [
         "SUCCESS",
         "SUCCESS",
@@ -1620,92 +1520,6 @@
       "tab": "discovery"
     },
     {
-      "name": "instagram_apify_profile_scraper_loader",
-      "category": "discovery_supporting",
-      "category_label": "Discovery서포트",
-      "directory": "instagram/ingestion/profile_scraper/loader",
-      "source_file": "instagram/ingestion/profile_scraper/loader/definitions.py",
-      "pipeline_role": "로더(IG profile)",
-      "in_artifact": true,
-      "is_running": true,
-      "within_48h": true,
-      "toggle_on": true,
-      "toggle_source": "automation",
-      "schedule_active_hint": true,
-      "cloud_last_run": "2026-10-01 05:44 KST",
-      "cloud_recent_runs": [
-        "SUCCESS",
-        "SUCCESS",
-        "SUCCESS"
-      ],
-      "cloud_fail_visible": false,
-      "cloud_status": "success",
-      "slack_repeat": true,
-      "cloud_issue": false,
-      "pipeline_issue": false,
-      "intentional_wait": false,
-      "obsolete_candidate": false,
-      "needs_review": false,
-      "issues_summary": "슬랙 실패 14일 30회",
-      "fail_count_14d": 30,
-      "fail_count_30d": 81,
-      "currently_failing": false,
-      "latest_fail_permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1790082763108549",
-      "failures": [
-        {
-          "ts_kst": "2026-09-22 22:12 KST",
-          "kind": "sensor",
-          "job_or_sensor": "profile_scraper_coordinator_sensor",
-          "permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1790082763108549",
-          "snippet": "Sensor fail · profile_scraper_coordinator_sensor"
-        },
-        {
-          "ts_kst": "2026-09-22 21:27 KST",
-          "kind": "sensor",
-          "job_or_sensor": "profile_scraper_coordinator_sensor",
-          "permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1790080053648829",
-          "snippet": "Sensor fail · profile_scraper_coordinator_sensor"
-        },
-        {
-          "ts_kst": "2026-09-22 15:40 KST",
-          "kind": "sensor",
-          "job_or_sensor": "profile_scraper_coordinator_sensor",
-          "permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1790059239796789",
-          "snippet": "Sensor fail · profile_scraper_coordinator_sensor"
-        },
-        {
-          "ts_kst": "2026-09-21 15:08 KST",
-          "kind": "sensor",
-          "job_or_sensor": "profile_scraper_coordinator_sensor",
-          "permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1789970889004269",
-          "snippet": "Sensor fail · profile_scraper_coordinator_sensor"
-        },
-        {
-          "ts_kst": "2026-09-21 14:38 KST",
-          "kind": "sensor",
-          "job_or_sensor": "profile_scraper_coordinator_sensor",
-          "permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1789969082727649",
-          "snippet": "Sensor fail · profile_scraper_coordinator_sensor"
-        }
-      ],
-      "schedule_text": "sensor `profile_scraper_coordinator_sensor` (RUNNING)",
-      "cron": null,
-      "trigger_type": "sensor",
-      "sensors": [
-        "profile_scraper_coordinator_sensor"
-      ],
-      "schedules": [],
-      "purpose": "IG Apify 수집/로더",
-      "purpose_blurb": "Loads full Instagram profile + post data from Apify Profile Scraper runs into ClickHouse `apify_instagram_profiles` / `apify_instagram_posts`, and downgrades va",
-      "rationale": "Ingest/mart/image/phase1/profile pipeline feeding Discovery materials.",
-      "created_at": "2026-03-06",
-      "dagster_default_status": "RUNNING",
-      "power": "on",
-      "power_label": "켜짐",
-      "notes": "최근 14일 실패 알림 있음(48h 밖일 수 있음)",
-      "tab": "discovery"
-    },
-    {
       "name": "instagram_apify_stats_materialization",
       "category": "discovery_supporting",
       "category_label": "Discovery서포트",
@@ -1718,7 +1532,7 @@
       "toggle_on": true,
       "toggle_source": "automation",
       "schedule_active_hint": true,
-      "cloud_last_run": "2026-10-01 06:01 KST",
+      "cloud_last_run": "2026-10-02 06:01 KST",
       "cloud_recent_runs": [
         "SUCCESS",
         "SUCCESS",
@@ -1776,7 +1590,7 @@
       "toggle_on": true,
       "toggle_source": "automation",
       "schedule_active_hint": true,
-      "cloud_last_run": "2026-10-01 09:04 KST",
+      "cloud_last_run": "2026-10-02 09:04 KST",
       "cloud_recent_runs": [
         "SUCCESS",
         "SUCCESS",
@@ -1826,7 +1640,7 @@
       "toggle_on": true,
       "toggle_source": "automation",
       "schedule_active_hint": true,
-      "cloud_last_run": "2026-10-01 03:47 KST",
+      "cloud_last_run": "2026-10-02 03:48 KST",
       "cloud_recent_runs": [
         "SUCCESS",
         "SUCCESS",
@@ -1876,7 +1690,7 @@
       "toggle_on": true,
       "toggle_source": "automation",
       "schedule_active_hint": true,
-      "cloud_last_run": "2026-10-01 00:14 KST",
+      "cloud_last_run": "2026-10-02 00:15 KST",
       "cloud_recent_runs": [
         "SUCCESS",
         "SUCCESS",
@@ -1941,7 +1755,7 @@
       "toggle_on": true,
       "toggle_source": "automation",
       "schedule_active_hint": true,
-      "cloud_last_run": "2026-10-01 05:20 KST",
+      "cloud_last_run": "2026-10-02 05:20 KST",
       "cloud_recent_runs": [
         "SUCCESS",
         "SUCCESS",
@@ -1991,7 +1805,7 @@
       "toggle_on": true,
       "toggle_source": "automation",
       "schedule_active_hint": true,
-      "cloud_last_run": "2026-10-01 05:58 KST",
+      "cloud_last_run": "2026-10-02 00:20 KST",
       "cloud_recent_runs": [
         "SUCCESS",
         "SUCCESS",
@@ -2041,7 +1855,7 @@
       "toggle_on": true,
       "toggle_source": "automation",
       "schedule_active_hint": true,
-      "cloud_last_run": "2026-10-01 05:55 KST",
+      "cloud_last_run": "2026-10-02 00:17 KST",
       "cloud_recent_runs": [
         "SUCCESS",
         "SUCCESS",
@@ -2049,14 +1863,14 @@
       ],
       "cloud_fail_visible": false,
       "cloud_status": "success",
-      "slack_repeat": true,
+      "slack_repeat": false,
       "cloud_issue": false,
       "pipeline_issue": false,
       "intentional_wait": false,
       "obsolete_candidate": false,
       "needs_review": false,
-      "issues_summary": "슬랙 실패 14일 11회",
-      "fail_count_14d": 11,
+      "issues_summary": "—",
+      "fail_count_14d": 4,
       "fail_count_30d": 26,
       "currently_failing": false,
       "latest_fail_permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1789712134621689",
@@ -2127,9 +1941,9 @@
       "toggle_on": true,
       "toggle_source": "automation",
       "schedule_active_hint": true,
-      "cloud_last_run": "2026-10-01 08:39 KST",
+      "cloud_last_run": "2026-10-02 09:08 KST",
       "cloud_recent_runs": [
-        "SUCCESS",
+        "STARTING",
         "SUCCESS",
         "SUCCESS"
       ],
@@ -2177,7 +1991,7 @@
       "toggle_on": true,
       "toggle_source": "automation",
       "schedule_active_hint": true,
-      "cloud_last_run": "2026-10-01 08:58 KST",
+      "cloud_last_run": "2026-10-02 08:59 KST",
       "cloud_recent_runs": [
         "SUCCESS",
         "SUCCESS",
@@ -2227,7 +2041,7 @@
       "toggle_on": true,
       "toggle_source": "automation",
       "schedule_active_hint": true,
-      "cloud_last_run": "2026-10-01 08:13 KST",
+      "cloud_last_run": "2026-10-02 08:13 KST",
       "cloud_recent_runs": [
         "SUCCESS",
         "SUCCESS",
@@ -2277,7 +2091,7 @@
       "toggle_on": true,
       "toggle_source": "automation",
       "schedule_active_hint": true,
-      "cloud_last_run": "2026-10-01 09:00 KST",
+      "cloud_last_run": "2026-10-02 09:00 KST",
       "cloud_recent_runs": [
         "SUCCESS",
         "SUCCESS",
@@ -2327,7 +2141,7 @@
       "toggle_on": true,
       "toggle_source": "automation",
       "schedule_active_hint": true,
-      "cloud_last_run": "2026-09-30 10:03 KST",
+      "cloud_last_run": "2026-10-01 10:04 KST",
       "cloud_recent_runs": [
         "SUCCESS",
         "SUCCESS",
@@ -2365,6 +2179,92 @@
       "tab": "ops"
     },
     {
+      "name": "instagram_posts_phase1_submitter_run",
+      "category": "discovery_supporting",
+      "category_label": "Discovery서포트",
+      "directory": "instagram/enrichment/posts_phase1_submitter",
+      "source_file": "instagram/enrichment/posts_phase1_submitter/definitions.py",
+      "pipeline_role": "라벨제출(IG)",
+      "in_artifact": true,
+      "is_running": true,
+      "within_48h": true,
+      "toggle_on": true,
+      "toggle_source": "automation",
+      "schedule_active_hint": true,
+      "cloud_last_run": "2026-10-02 08:50 KST",
+      "cloud_recent_runs": [
+        "QUEUED",
+        "QUEUED",
+        "QUEUED"
+      ],
+      "cloud_fail_visible": false,
+      "cloud_status": "unknown",
+      "slack_repeat": true,
+      "cloud_issue": false,
+      "pipeline_issue": false,
+      "intentional_wait": false,
+      "obsolete_candidate": false,
+      "needs_review": false,
+      "issues_summary": "슬랙 실패 14일 18회",
+      "fail_count_14d": 18,
+      "fail_count_30d": 37,
+      "currently_failing": false,
+      "latest_fail_permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1790074874602169",
+      "failures": [
+        {
+          "ts_kst": "2026-09-22 20:01 KST",
+          "kind": "time_limit",
+          "job_or_sensor": "instagram_posts_phase1_submitter_run",
+          "permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1790074874602169",
+          "snippet": "Exceeded run time limit · instagram_posts_phase1_submitter_run"
+        },
+        {
+          "ts_kst": "2026-09-22 20:00 KST",
+          "kind": "time_limit",
+          "job_or_sensor": "instagram_posts_phase1_submitter_run",
+          "permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1790074814397189",
+          "snippet": "Exceeded run time limit · instagram_posts_phase1_submitter_run"
+        },
+        {
+          "ts_kst": "2026-09-22 19:59 KST",
+          "kind": "time_limit",
+          "job_or_sensor": "instagram_posts_phase1_submitter_run",
+          "permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1790074783995879",
+          "snippet": "Exceeded run time limit · instagram_posts_phase1_submitter_run"
+        },
+        {
+          "ts_kst": "2026-09-22 18:53 KST",
+          "kind": "time_limit",
+          "job_or_sensor": "instagram_posts_phase1_submitter_run",
+          "permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1790070839776349",
+          "snippet": "Exceeded run time limit · instagram_posts_phase1_submitter_run"
+        },
+        {
+          "ts_kst": "2026-09-22 18:02 KST",
+          "kind": "run_failure",
+          "job_or_sensor": "instagram_posts_phase1_submitter_run",
+          "permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1790067766640759",
+          "snippet": "Run failure · instagram_posts_phase1_submitter_run"
+        }
+      ],
+      "schedule_text": "sensor `instagram_posts_phase1_submitter_coordination_sensor` (RUNNING)",
+      "cron": null,
+      "trigger_type": "sensor",
+      "sensors": [
+        "instagram_posts_phase1_submitter_coordination_sensor"
+      ],
+      "schedules": [],
+      "purpose": "IG 포스트/프로필  enrichment",
+      "purpose_blurb": "Submits Phase 1 (structured data extraction) batch jobs to Vertex AI for Instagram posts that have completed image processing. Asset `instagram_posts_phase1_sub",
+      "rationale": "Ingest/mart/image/phase1/profile pipeline feeding Discovery materials.",
+      "created_at": "2026-03-06",
+      "dagster_default_status": "RUNNING",
+      "power": "on",
+      "power_label": "켜짐",
+      "notes": "최근 14일 실패 알림 있음(48h 밖일 수 있음)",
+      "tab": "discovery"
+    },
+    {
       "name": "instagram_profile_image_processor_run",
       "category": "discovery_supporting",
       "category_label": "Discovery서포트",
@@ -2377,7 +2277,7 @@
       "toggle_on": true,
       "toggle_source": "automation",
       "schedule_active_hint": true,
-      "cloud_last_run": "2026-10-01 05:59 KST",
+      "cloud_last_run": "2026-10-02 00:20 KST",
       "cloud_recent_runs": [
         "SUCCESS",
         "SUCCESS",
@@ -2427,7 +2327,7 @@
       "toggle_on": true,
       "toggle_source": "automation",
       "schedule_active_hint": true,
-      "cloud_last_run": "2026-10-01 06:27 KST",
+      "cloud_last_run": "2026-10-02 00:49 KST",
       "cloud_recent_runs": [
         "SUCCESS",
         "SUCCESS",
@@ -2485,7 +2385,7 @@
       "toggle_on": true,
       "toggle_source": "automation",
       "schedule_active_hint": true,
-      "cloud_last_run": "2026-10-01 06:39 KST",
+      "cloud_last_run": "2026-10-02 07:30 KST",
       "cloud_recent_runs": [
         "SUCCESS",
         "SUCCESS",
@@ -2535,7 +2435,7 @@
       "toggle_on": true,
       "toggle_source": "automation",
       "schedule_active_hint": true,
-      "cloud_last_run": "2026-10-01 05:24 KST",
+      "cloud_last_run": "2026-10-02 08:51 KST",
       "cloud_recent_runs": [
         "SUCCESS",
         "SUCCESS",
@@ -2549,12 +2449,33 @@
       "intentional_wait": false,
       "obsolete_candidate": false,
       "needs_review": false,
-      "issues_summary": "슬랙 실패 14일 56회",
-      "fail_count_14d": 56,
-      "fail_count_30d": 61,
+      "issues_summary": "슬랙 실패 14일 59회",
+      "fail_count_14d": 59,
+      "fail_count_30d": 64,
       "currently_failing": true,
-      "latest_fail_permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1790817612869689",
+      "latest_fail_permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1790880616986339",
       "failures": [
+        {
+          "ts_kst": "2026-10-02 03:50 KST",
+          "kind": "sensor",
+          "job_or_sensor": "instagram_profile_processor_coordination_sensor",
+          "permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1790880616986339",
+          "snippet": "Sensor fail · instagram_profile_processor_coordination_sensor"
+        },
+        {
+          "ts_kst": "2026-10-02 01:20 KST",
+          "kind": "sensor",
+          "job_or_sensor": "instagram_profile_processor_coordination_sensor",
+          "permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1790871639301769",
+          "snippet": "Sensor fail · instagram_profile_processor_coordination_sensor"
+        },
+        {
+          "ts_kst": "2026-10-01 23:50 KST",
+          "kind": "sensor",
+          "job_or_sensor": "instagram_profile_processor_coordination_sensor",
+          "permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1790866217005479",
+          "snippet": "Sensor fail · instagram_profile_processor_coordination_sensor"
+        },
         {
           "ts_kst": "2026-10-01 10:20 KST",
           "kind": "sensor",
@@ -2567,27 +2488,6 @@
           "kind": "sensor",
           "job_or_sensor": "instagram_profile_processor_coordination_sensor",
           "permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1790803226415549",
-          "snippet": "Sensor fail · instagram_profile_processor_coordination_sensor"
-        },
-        {
-          "ts_kst": "2026-09-30 20:20 KST",
-          "kind": "sensor",
-          "job_or_sensor": "instagram_profile_processor_coordination_sensor",
-          "permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1790767215820349",
-          "snippet": "Sensor fail · instagram_profile_processor_coordination_sensor"
-        },
-        {
-          "ts_kst": "2026-09-30 15:20 KST",
-          "kind": "sensor",
-          "job_or_sensor": "instagram_profile_processor_coordination_sensor",
-          "permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1790749218770049",
-          "snippet": "Sensor fail · instagram_profile_processor_coordination_sensor"
-        },
-        {
-          "ts_kst": "2026-09-30 10:20 KST",
-          "kind": "sensor",
-          "job_or_sensor": "instagram_profile_processor_coordination_sensor",
-          "permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1790731224567419",
           "snippet": "Sensor fail · instagram_profile_processor_coordination_sensor"
         }
       ],
@@ -2621,7 +2521,7 @@
       "toggle_on": true,
       "toggle_source": "automation",
       "schedule_active_hint": true,
-      "cloud_last_run": "2026-10-01 06:18 KST",
+      "cloud_last_run": "2026-10-02 00:40 KST",
       "cloud_recent_runs": [
         "SUCCESS",
         "SUCCESS",
@@ -2637,7 +2537,7 @@
       "needs_review": false,
       "issues_summary": "—",
       "fail_count_14d": 0,
-      "fail_count_30d": 23,
+      "fail_count_30d": 11,
       "currently_failing": false,
       "latest_fail_permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1788787955017749",
       "failures": [
@@ -2707,7 +2607,7 @@
       "toggle_on": true,
       "toggle_source": "automation",
       "schedule_active_hint": true,
-      "cloud_last_run": "2026-10-01 06:07 KST",
+      "cloud_last_run": "2026-10-02 00:28 KST",
       "cloud_recent_runs": [
         "SUCCESS",
         "SUCCESS",
@@ -2793,7 +2693,7 @@
       "toggle_on": true,
       "toggle_source": "automation",
       "schedule_active_hint": true,
-      "cloud_last_run": "2026-09-30 10:02 KST",
+      "cloud_last_run": "2026-10-01 10:05 KST",
       "cloud_recent_runs": [
         "SUCCESS",
         "SUCCESS",
@@ -2843,7 +2743,7 @@
       "toggle_on": true,
       "toggle_source": "automation",
       "schedule_active_hint": true,
-      "cloud_last_run": "2026-10-01 03:05 KST",
+      "cloud_last_run": "2026-10-02 03:06 KST",
       "cloud_recent_runs": [
         "SUCCESS",
         "SUCCESS",
@@ -2893,7 +2793,7 @@
       "toggle_on": true,
       "toggle_source": "automation",
       "schedule_active_hint": true,
-      "cloud_last_run": "2026-10-01 02:22 KST",
+      "cloud_last_run": "2026-10-02 02:22 KST",
       "cloud_recent_runs": [
         "SUCCESS",
         "SUCCESS",
@@ -2943,7 +2843,7 @@
       "toggle_on": true,
       "toggle_source": "automation",
       "schedule_active_hint": true,
-      "cloud_last_run": "2026-10-01 07:15 KST",
+      "cloud_last_run": "2026-10-02 07:15 KST",
       "cloud_recent_runs": [
         "SUCCESS",
         "SUCCESS",
@@ -2993,7 +2893,7 @@
       "toggle_on": true,
       "toggle_source": "automation",
       "schedule_active_hint": true,
-      "cloud_last_run": "2026-09-30 12:00 KST",
+      "cloud_last_run": "2026-10-01 12:01 KST",
       "cloud_recent_runs": [
         "SUCCESS",
         "SUCCESS",
@@ -3043,7 +2943,7 @@
       "toggle_on": true,
       "toggle_source": "automation",
       "schedule_active_hint": true,
-      "cloud_last_run": "2026-10-01 05:46 KST",
+      "cloud_last_run": "2026-10-02 05:45 KST",
       "cloud_recent_runs": [
         "SUCCESS",
         "SUCCESS",
@@ -3093,7 +2993,7 @@
       "toggle_on": true,
       "toggle_source": "automation",
       "schedule_active_hint": true,
-      "cloud_last_run": "2026-10-01 06:52 KST",
+      "cloud_last_run": "2026-10-02 06:53 KST",
       "cloud_recent_runs": [
         "SUCCESS",
         "SUCCESS",
@@ -3179,7 +3079,7 @@
       "toggle_on": true,
       "toggle_source": "automation",
       "schedule_active_hint": true,
-      "cloud_last_run": "2026-10-01 09:00 KST",
+      "cloud_last_run": "2026-10-02 09:02 KST",
       "cloud_recent_runs": [
         "SUCCESS",
         "SUCCESS",
@@ -3194,7 +3094,7 @@
       "obsolete_candidate": false,
       "needs_review": false,
       "issues_summary": "의도적 OFF · STT (비용 보류)",
-      "fail_count_14d": 3,
+      "fail_count_14d": 0,
       "fail_count_30d": 3,
       "currently_failing": false,
       "latest_fail_permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1789661290311279",
@@ -3235,7 +3135,7 @@
       "dagster_default_status": "STOPPED",
       "power": "off",
       "power_label": "꺼짐",
-      "notes": "JOB-INDEX상 schedule/sensor STOPPED · 최근 14일 실패 알림 있음(48h 밖일 수 있음)",
+      "notes": "JOB-INDEX상 schedule/sensor STOPPED · 최근 실패 알림 없음(성공 확정 아님)",
       "tab": "discovery"
     },
     {
@@ -3251,7 +3151,7 @@
       "toggle_on": true,
       "toggle_source": "automation",
       "schedule_active_hint": true,
-      "cloud_last_run": "2026-10-01 06:32 KST",
+      "cloud_last_run": "2026-10-02 06:32 KST",
       "cloud_recent_runs": [
         "SUCCESS",
         "SUCCESS",
@@ -3301,7 +3201,7 @@
       "toggle_on": true,
       "toggle_source": "automation",
       "schedule_active_hint": true,
-      "cloud_last_run": "2026-10-01 06:08 KST",
+      "cloud_last_run": "2026-10-02 06:25 KST",
       "cloud_recent_runs": [
         "SUCCESS",
         "SUCCESS",
@@ -3351,7 +3251,7 @@
       "toggle_on": true,
       "toggle_source": "automation",
       "schedule_active_hint": true,
-      "cloud_last_run": "2026-10-01 06:15 KST",
+      "cloud_last_run": "2026-10-02 06:33 KST",
       "cloud_recent_runs": [
         "SUCCESS",
         "SUCCESS",
@@ -3365,8 +3265,8 @@
       "intentional_wait": false,
       "obsolete_candidate": false,
       "needs_review": false,
-      "issues_summary": "슬랙 실패 14일 46회",
-      "fail_count_14d": 46,
+      "issues_summary": "슬랙 실패 14일 39회",
+      "fail_count_14d": 39,
       "fail_count_30d": 101,
       "currently_failing": true,
       "latest_fail_permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1790818245334369",
@@ -3437,7 +3337,7 @@
       "toggle_on": true,
       "toggle_source": "automation",
       "schedule_active_hint": true,
-      "cloud_last_run": "2026-10-01 09:02 KST",
+      "cloud_last_run": "2026-10-02 09:02 KST",
       "cloud_recent_runs": [
         "SUCCESS",
         "SUCCESS",
@@ -3502,7 +3402,7 @@
       "toggle_on": true,
       "toggle_source": "automation",
       "schedule_active_hint": true,
-      "cloud_last_run": "2026-10-01 05:31 KST",
+      "cloud_last_run": "2026-10-02 05:31 KST",
       "cloud_recent_runs": [
         "SUCCESS",
         "SUCCESS",
@@ -3552,7 +3452,7 @@
       "toggle_on": true,
       "toggle_source": "automation",
       "schedule_active_hint": true,
-      "cloud_last_run": "2026-10-01 00:39 KST",
+      "cloud_last_run": "2026-10-02 00:36 KST",
       "cloud_recent_runs": [
         "SUCCESS",
         "SUCCESS",
@@ -3639,7 +3539,7 @@
       "toggle_on": true,
       "toggle_source": "automation",
       "schedule_active_hint": true,
-      "cloud_last_run": "2026-10-01 05:10 KST",
+      "cloud_last_run": "2026-10-02 05:10 KST",
       "cloud_recent_runs": [
         "SUCCESS",
         "SUCCESS",
@@ -3689,7 +3589,7 @@
       "toggle_on": true,
       "toggle_source": "automation",
       "schedule_active_hint": true,
-      "cloud_last_run": "2026-10-01 09:01 KST",
+      "cloud_last_run": "2026-10-02 09:01 KST",
       "cloud_recent_runs": [
         "SUCCESS",
         "SUCCESS",
@@ -3704,7 +3604,7 @@
       "obsolete_candidate": false,
       "needs_review": false,
       "issues_summary": "—",
-      "fail_count_14d": 4,
+      "fail_count_14d": 2,
       "fail_count_30d": 4,
       "currently_failing": false,
       "latest_fail_permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1789992354182879",
@@ -3768,7 +3668,7 @@
       "toggle_on": true,
       "toggle_source": "automation",
       "schedule_active_hint": true,
-      "cloud_last_run": "2026-10-01 06:19 KST",
+      "cloud_last_run": "2026-10-02 06:37 KST",
       "cloud_recent_runs": [
         "SUCCESS",
         "SUCCESS",
@@ -3782,8 +3682,8 @@
       "intentional_wait": true,
       "obsolete_candidate": false,
       "needs_review": false,
-      "issues_summary": "슬랙 실패 14일 37회 · 의도적 OFF · TT 이미지 청크 (미착수)",
-      "fail_count_14d": 37,
+      "issues_summary": "슬랙 실패 14일 23회 · 의도적 OFF · TT 이미지 청크 (미착수)",
+      "fail_count_14d": 23,
       "fail_count_30d": 115,
       "currently_failing": false,
       "latest_fail_permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1790082582102639",
@@ -3854,7 +3754,7 @@
       "toggle_on": true,
       "toggle_source": "automation",
       "schedule_active_hint": true,
-      "cloud_last_run": "2026-10-01 08:56 KST",
+      "cloud_last_run": "2026-10-02 09:02 KST",
       "cloud_recent_runs": [
         "SUCCESS",
         "SUCCESS",
@@ -3869,7 +3769,7 @@
       "obsolete_candidate": false,
       "needs_review": false,
       "issues_summary": "—",
-      "fail_count_14d": 1,
+      "fail_count_14d": 0,
       "fail_count_30d": 1,
       "currently_failing": false,
       "latest_fail_permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1789689340691749",
@@ -3897,7 +3797,7 @@
       "dagster_default_status": "RUNNING",
       "power": "on",
       "power_label": "켜짐",
-      "notes": "최근 14일 실패 알림 있음(48h 밖일 수 있음)",
+      "notes": "최근 실패 알림 없음(성공 확정 아님)",
       "tab": "discovery"
     },
     {
@@ -3913,7 +3813,7 @@
       "toggle_on": true,
       "toggle_source": "automation",
       "schedule_active_hint": true,
-      "cloud_last_run": "2026-10-01 08:28 KST",
+      "cloud_last_run": "2026-10-02 08:13 KST",
       "cloud_recent_runs": [
         "SUCCESS",
         "SUCCESS",
@@ -3963,7 +3863,7 @@
       "toggle_on": true,
       "toggle_source": "automation",
       "schedule_active_hint": true,
-      "cloud_last_run": "2026-10-01 09:01 KST",
+      "cloud_last_run": "2026-10-02 09:03 KST",
       "cloud_recent_runs": [
         "SUCCESS",
         "SUCCESS",
@@ -4021,7 +3921,7 @@
       "toggle_on": true,
       "toggle_source": "automation",
       "schedule_active_hint": true,
-      "cloud_last_run": "2026-10-01 09:01 KST",
+      "cloud_last_run": "2026-10-02 09:01 KST",
       "cloud_recent_runs": [
         "SUCCESS",
         "SUCCESS",
@@ -4036,7 +3936,7 @@
       "obsolete_candidate": false,
       "needs_review": false,
       "issues_summary": "—",
-      "fail_count_14d": 4,
+      "fail_count_14d": 1,
       "fail_count_30d": 4,
       "currently_failing": false,
       "latest_fail_permalink": "https://storika-ai.slack.com/archives/C0A3KBPU2P4/p1789862754686059",
@@ -4088,6 +3988,106 @@
       "tab": "discovery"
     },
     {
+      "name": "tiktok_posts_phase1_monitor_run",
+      "category": "discovery_supporting",
+      "category_label": "Discovery서포트",
+      "directory": "tiktok/enrichment/posts_phase1_monitor",
+      "source_file": "tiktok/enrichment/posts_phase1_monitor/definitions.py",
+      "pipeline_role": "라벨적재(TT)",
+      "in_artifact": true,
+      "is_running": true,
+      "within_48h": true,
+      "toggle_on": true,
+      "toggle_source": "automation",
+      "schedule_active_hint": true,
+      "cloud_last_run": "2026-10-02 06:07 KST",
+      "cloud_recent_runs": [
+        "SUCCESS",
+        "SUCCESS",
+        "SUCCESS"
+      ],
+      "cloud_fail_visible": false,
+      "cloud_status": "success",
+      "slack_repeat": false,
+      "cloud_issue": false,
+      "pipeline_issue": false,
+      "intentional_wait": false,
+      "obsolete_candidate": false,
+      "needs_review": false,
+      "issues_summary": "—",
+      "fail_count_14d": 0,
+      "fail_count_30d": 0,
+      "currently_failing": false,
+      "latest_fail_permalink": null,
+      "failures": [],
+      "schedule_text": "sensor `tiktok_posts_phase1_monitor_coordination_sensor` (RUNNING)",
+      "cron": null,
+      "trigger_type": "sensor",
+      "sensors": [
+        "tiktok_posts_phase1_monitor_coordination_sensor"
+      ],
+      "schedules": [],
+      "purpose": "TT 포스트/프로필 enrichment",
+      "purpose_blurb": "The TikTok Post Phase 1 Monitor checks the status of Phase 1 batch jobs submitted to Vertex AI, processes completed results, and inserts extracted posts to Clic",
+      "rationale": "Ingest/mart/image/phase1/profile pipeline feeding Discovery materials.",
+      "created_at": "2026-03-06",
+      "dagster_default_status": "RUNNING",
+      "power": "on",
+      "power_label": "켜짐",
+      "notes": "최근 실패 알림 없음(성공 확정 아님)",
+      "tab": "discovery"
+    },
+    {
+      "name": "tiktok_posts_phase1_submitter_run",
+      "category": "discovery_supporting",
+      "category_label": "Discovery서포트",
+      "directory": "tiktok/enrichment/posts_phase1_submitter",
+      "source_file": "tiktok/enrichment/posts_phase1_submitter/definitions.py",
+      "pipeline_role": "라벨제출(TT)",
+      "in_artifact": true,
+      "is_running": true,
+      "within_48h": true,
+      "toggle_on": true,
+      "toggle_source": "automation",
+      "schedule_active_hint": true,
+      "cloud_last_run": "2026-10-02 09:04 KST",
+      "cloud_recent_runs": [
+        "SUCCESS",
+        "SUCCESS",
+        "SUCCESS"
+      ],
+      "cloud_fail_visible": false,
+      "cloud_status": "success",
+      "slack_repeat": false,
+      "cloud_issue": false,
+      "pipeline_issue": false,
+      "intentional_wait": false,
+      "obsolete_candidate": false,
+      "needs_review": false,
+      "issues_summary": "—",
+      "fail_count_14d": 0,
+      "fail_count_30d": 0,
+      "currently_failing": false,
+      "latest_fail_permalink": null,
+      "failures": [],
+      "schedule_text": "sensor `tiktok_posts_phase1_submitter_coordination_sensor` (RUNNING)",
+      "cron": null,
+      "trigger_type": "sensor",
+      "sensors": [
+        "tiktok_posts_phase1_submitter_coordination_sensor"
+      ],
+      "schedules": [],
+      "purpose": "TT 포스트/프로필 enrichment",
+      "purpose_blurb": "The TikTok Post Phase 1 Submitter submits batch jobs to Vertex AI for structured data extraction from TikTok posts. It processes chunks that have completed imag",
+      "rationale": "Ingest/mart/image/phase1/profile pipeline feeding Discovery materials.",
+      "created_at": "2026-03-06",
+      "dagster_default_status": "RUNNING",
+      "power": "on",
+      "power_label": "켜짐",
+      "notes": "최근 실패 알림 없음(성공 확정 아님)",
+      "tab": "discovery"
+    },
+    {
       "name": "tiktok_profile_processor_monitor_run",
       "category": "discovery_supporting",
       "category_label": "Discovery서포트",
@@ -4100,9 +4100,9 @@
       "toggle_on": true,
       "toggle_source": "automation",
       "schedule_active_hint": true,
-      "cloud_last_run": "2026-10-01 09:05 KST",
+      "cloud_last_run": "2026-10-01 16:18 KST",
       "cloud_recent_runs": [
-        "STARTED",
+        "SUCCESS",
         "SUCCESS",
         "SUCCESS"
       ],
@@ -4150,7 +4150,7 @@
       "toggle_on": true,
       "toggle_source": "automation",
       "schedule_active_hint": true,
-      "cloud_last_run": "2026-10-01 08:50 KST",
+      "cloud_last_run": "2026-10-02 03:22 KST",
       "cloud_recent_runs": [
         "SUCCESS",
         "SUCCESS",
@@ -4208,7 +4208,7 @@
       "toggle_on": true,
       "toggle_source": "automation",
       "schedule_active_hint": true,
-      "cloud_last_run": "2026-09-30 10:01 KST",
+      "cloud_last_run": "2026-10-01 10:01 KST",
       "cloud_recent_runs": [
         "SUCCESS",
         "SUCCESS",
@@ -4258,7 +4258,7 @@
       "toggle_on": true,
       "toggle_source": "automation",
       "schedule_active_hint": true,
-      "cloud_last_run": "2026-10-01 03:04 KST",
+      "cloud_last_run": "2026-10-02 03:06 KST",
       "cloud_recent_runs": [
         "SUCCESS",
         "SUCCESS",
@@ -4949,11 +4949,11 @@
       "pipeline_role": "이미지처리(TT)",
       "in_artifact": true,
       "is_running": false,
-      "within_48h": false,
+      "within_48h": true,
       "toggle_on": false,
       "toggle_source": "automation",
       "schedule_active_hint": false,
-      "cloud_last_run": "2026-09-21 02:13 KST",
+      "cloud_last_run": "2026-10-02 06:42 KST",
       "cloud_recent_runs": [
         "SUCCESS",
         "SUCCESS",
